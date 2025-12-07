@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "title": "Partnerships",
+    "subtitle": "Collaborate with us to support founders and build stronger companies."
+  },
+  "whoWePartnerWith": {
+    "title": "Who We Partner With",
+    "description": "We collaborate with organizations that share our commitment to building strong foundations for founders."
+  },
+  "benefits": {
+    "title": "Partnership Benefits",
+    "description": "What you gain from partnering with Founder Groundworks."
+  },
+  "whyFG": {
+    "title": "Why Founder Groundworks",
+    "description": "What makes us different and why organizations choose to partner with us."
+  },
+  "cta": {
+    "title": "Interested in Partnering?",
+    "subtitle": "Let's discuss how we can work together to support founders and build stronger companies."
+  }
+}
+

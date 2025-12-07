@@ -1,0 +1,27 @@
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  body, p, a, button, input, textarea, label, span, li {
+    font-family: 'Inter Variable', sans-serif;
+  }
+
+  button {
+    font-weight: 600; /* Inter Semibold */
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    p {
+      font-size: 18px;
+    }
+  }
+}
+

@@ -1,0 +1,28 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/700.css";
+
+@import "tailwindcss";
+
+@import "./typography.css";
+@import "./utilities.css";
+@import "./animations.css";
+
+@layer base {
+  :root {
+    /* Foundational Spacing Scale - Editorial Rhythm System */
+    --fg-space-xxl: 120px; /* hero → next section */
+    --fg-space-xl: 96px;   /* section → section */
+    --fg-space-lg: 64px;   /* major subsection → next block */
+    --fg-space-md: 40px;   /* header → paragraph group */
+    --fg-space-sm: 24px;   /* subheader → paragraph */
+    --fg-space-xs: 16px;   /* paragraph → paragraph */
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #0E1F36;
+  }
+}
+

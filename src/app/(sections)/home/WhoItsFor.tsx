@@ -1,0 +1,56 @@
+"use client";
+
+import Section from "@/components/layout/Section";
+import Container from "@/components/layout/Container";
+import HeadingBlock from "@/components/typography/HeadingBlock";
+import StaggerChildren from "@/components/animations/StaggerChildren";
+import PlaceholderImage from "@/components/media/PlaceholderImage";
+
+export default function WhoItsFor() {
+  const participants = [
+    "Professionals transitioning into entrepreneurship",
+    "Builders and creatives with strong skills but no business structure",
+    "International talent preparing to start or grow a business in the UK",
+    'Individuals who have tried to "start something" before, but without a clear framework',
+  ];
+
+  return (
+    <Section>
+      <Container>
+        <HeadingBlock
+          title='Not "serial founders." First-time founders.'
+          subtitle="Who we serve"
+          align="center"
+          maxWidth="lg"
+        />
+        <StaggerChildren staggerDelay={0.12}>
+          <div className="mt-fg-md space-y-fg-xs">
+            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+              Founder Groundworks is built for people at the very beginning of the journey, often with no previous startup experience at all.
+            </p>
+            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
+              Our participants include:
+            </p>
+            <ul className="space-y-fg-xs">
+              {participants.map((participant, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-fg-gold mr-3 mt-1">●</span>
+                  <span className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+                    {participant}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed mt-fg-sm font-semibold">
+              If you are serious about becoming a founder – not just &quot;starting a side project&quot; – this is where you begin.
+            </p>
+          </div>
+        </StaggerChildren>
+        <div className="mt-fg-lg">
+          <PlaceholderImage className="h-64 md:h-96 lg:h-[400px]" />
+        </div>
+      </Container>
+    </Section>
+  );
+}
+

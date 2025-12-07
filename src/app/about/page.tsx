@@ -1,0 +1,31 @@
+import PageHero from "@/app/(components)/PageHero";
+import MissionVision from "@/app/(sections)/about/MissionVision";
+import WhyWeExist from "@/app/(sections)/about/WhyWeExist";
+import Philosophy from "@/app/(sections)/about/Philosophy";
+import FGFramework from "@/app/(sections)/about/FGFramework";
+import Values from "@/app/(sections)/about/Values";
+import { generatePageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "About",
+  description: "Learn about Founder Groundworks, our mission, vision, and the values that guide everything we do.",
+  path: "/about",
+});
+
+export default function AboutPage() {
+  return (
+    <div className="pt-20">
+      <PageHero 
+        title="An institute for first-time founders." 
+        subtitle="Founder Groundworks exists to give serious, early-stage founders the structure, language and discipline they were never formally taught."
+      />
+      <MissionVision />
+      <WhyWeExist />
+      <Philosophy />
+      <FGFramework />
+      <Values />
+    </div>
+  );
+}
+

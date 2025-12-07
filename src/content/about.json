@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": "About Founder Groundworks",
+    "subtitle": "Building founders from the ground up."
+  },
+  "mission": {
+    "title": "Our Mission",
+    "description": "To build founders from the ground up by providing institutional support, strategic guidance, and the tools necessary to build responsibly and sustainably."
+  },
+  "vision": {
+    "title": "Our Vision",
+    "description": "A world where every founder has the foundation, knowledge, and support to build companies that create lasting value and positive impact."
+  },
+  "whyWeExist": {
+    "title": "Why We Exist",
+    "description": "The problem we're solving and why it matters."
+  },
+  "philosophy": {
+    "title": "Our Philosophy",
+    "description": "The principles that guide everything we do."
+  },
+  "framework": {
+    "title": "The FG Framework",
+    "description": "Our unique framework for building strong foundations."
+  },
+  "values": {
+    "title": "Our Values",
+    "description": "The core values that define who we are and how we work."
+  }
+}
+
