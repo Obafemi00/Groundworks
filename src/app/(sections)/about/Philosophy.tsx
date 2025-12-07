@@ -30,16 +30,16 @@ export default function Philosophy() {
             <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
               Our approach is simple:
             </p>
-            <ul className="space-y-fg-xs">
+            <div className="space-y-4">
               {principles.map((principle, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-fg-gold mr-3 mt-1">●</span>
-                  <span className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+                <div key={index} className="flex items-start gap-4">
+                  <span className="mt-1 text-fg-gold flex-shrink-0 font-inter text-lg">➤</span>
+                  <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed flex-1">
                     {principle}
-                  </span>
-                </li>
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
             <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed mt-fg-sm font-semibold">
               We are not a "motivation engine". We are a formation institute.
             </p>

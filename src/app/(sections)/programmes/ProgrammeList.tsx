@@ -19,8 +19,8 @@ export default function ProgrammeList() {
               Founder Groundworks is built around a simple path. You start with foundations, develop through practice, and finish with a clear understanding of where you stand as a founder, and what comes next.
             </p>
           </div>
-          <StaggerChildren staggerDelay={0.1}>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <StaggerChildren staggerDelay={0.12}>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
               {programmes.map((programme) => (
                 <ProgrammeCard key={programme.id} programme={programme} />
               ))}

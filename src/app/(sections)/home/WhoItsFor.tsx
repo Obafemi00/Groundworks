@@ -31,16 +31,16 @@ export default function WhoItsFor() {
             <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
               Our participants include:
             </p>
-            <ul className="space-y-fg-xs">
+            <div className="space-y-4">
               {participants.map((participant, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-fg-gold mr-3 mt-1">●</span>
-                  <span className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+                <div key={index} className="flex items-start gap-4">
+                  <span className="mt-1 text-fg-gold flex-shrink-0 font-inter text-lg">➤</span>
+                  <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed flex-1">
                     {participant}
-                  </span>
-                </li>
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
             <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed mt-fg-sm font-semibold">
               If you are serious about becoming a founder – not just &quot;starting a side project&quot; – this is where you begin.
             </p>

@@ -51,22 +51,36 @@ export default function Button({
 
   const buttonContent = (
     <>
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10" style={{ color: variant === "primary" ? "#FFFFFF" : variant === "accent" ? "#0E1F36" : variant === "secondary" ? "#0E1F36" : "#0E1F36" }}>
+        {children}
+      </span>
       <motion.span
         className="relative z-10 ml-2"
         initial={{ x: 0 }}
         whileHover={{ x: 6 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        style={{ color: variant === "primary" ? "#FFFFFF" : variant === "accent" ? "#0E1F36" : variant === "secondary" ? "#0E1F36" : "#0E1F36" }}
       >
         →
       </motion.span>
       {variant === "primary" && (
-        <motion.div
-          className="absolute inset-0 bg-fg-gold"
-          initial={{ x: "-100%" }}
-          whileHover={{ x: 0 }}
-          transition={{ duration: 0.3 }}
-        />
+        <>
+          <motion.div
+            className="absolute inset-0 bg-fg-gold"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+          />
+          <motion.span
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ color: "#0E1F36" }}
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          >
+            {children} →
+          </motion.span>
+        </>
       )}
       {variant === "accent" && (
         <motion.div
@@ -80,12 +94,20 @@ export default function Button({
   );
 
   if (href) {
+    const linkStyles = variant === "primary" 
+      ? { backgroundColor: "#0E1F36", color: "#FFFFFF" }
+      : variant === "accent"
+      ? { backgroundColor: "#C4A463", color: "#0E1F36" }
+      : variant === "secondary"
+      ? { backgroundColor: "#FFFFFF", color: "#0E1F36", borderColor: "#0E1F36" }
+      : { backgroundColor: "transparent", color: "#0E1F36", borderColor: "#0E1F36" };
+
     return (
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
       >
-        <Link href={href} className={classes}>
+        <Link href={href} className={classes} style={linkStyles}>
           {buttonContent}
         </Link>
       </motion.div>
