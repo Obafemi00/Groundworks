@@ -16,7 +16,7 @@ export default function Header() {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
             ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-fg-sand/30" 
@@ -155,7 +155,7 @@ export default function Header() {
               initial={{ y: "-100%" }}
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
-              transition={{ type: "tween", duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ type: "tween", duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
               className="fixed top-0 left-0 right-0 bg-white z-50 shadow-lg lg:hidden"
             >
               <div className="max-w-[1400px] mx-auto px-6 py-8">

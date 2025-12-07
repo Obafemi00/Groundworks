@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -38,12 +39,12 @@ export default function SplitText({
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
       },
     },
   };
 
-  const ComponentTag = Component as keyof JSX.IntrinsicElements;
+  const ComponentTag = Component as React.ElementType;
 
   return (
     <motion.div

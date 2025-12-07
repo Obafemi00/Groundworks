@@ -69,7 +69,7 @@ export default function Footer() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
               className="lg:col-span-2"
             >
               {/* Brand Section */}
@@ -145,7 +145,7 @@ export default function Footer() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.4, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
                 className="border-l border-fg-sand/20 pl-6"
               >
                 <h4 className="font-inter text-xs font-semibold uppercase tracking-wider text-fg-navy mb-4 relative">

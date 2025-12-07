@@ -1,5 +1,8 @@
+"use client";
+
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import FadeUp from "@/components/animations/FadeUp";
 
 type SectionHeaderProps = {
   title: string;
@@ -8,12 +11,6 @@ type SectionHeaderProps = {
   className?: string;
   align?: "left" | "center";
 };
-
-"use client";
-
-import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
-import FadeUp from "@/components/animations/FadeUp";
 
 export default function SectionHeader({
   title,

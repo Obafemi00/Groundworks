@@ -13,7 +13,7 @@ export function useScrollAnimation(options?: {
     once: options?.once ?? true,
     margin: options?.margin ?? "-100px",
     amount: options?.amount,
-  });
+  } as Parameters<typeof useInView>[1]);
 
   return { ref, isInView };
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import FadeUp from "@/components/animations/FadeUp";
 
 type HeadingBlockProps = {
-  title: string;
+  title?: string;
   subtitle?: string;
   description?: string | ReactNode;
   align?: "left" | "center";
@@ -47,7 +47,7 @@ export default function HeadingBlock({
   textColor,
   descriptionColor = "text-fg-grey",
 }: HeadingBlockProps) {
-  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const HeadingTag = `h${level}` as React.ElementType;
 
   const content = (
     <div className={cn(
@@ -60,12 +60,14 @@ export default function HeadingBlock({
           {subtitle}
         </p>
       )}
-      <HeadingTag className={cn(
-        getHeadingClasses(level, textColor),
-        align === "center" && "text-center"
-      )}>
-        {title}
-      </HeadingTag>
+      {title && (
+        <HeadingTag className={cn(
+          getHeadingClasses(level, textColor),
+          align === "center" && "text-center"
+        )}>
+          {title}
+        </HeadingTag>
+      )}
       {description && (
         <div className={cn("mt-fg-md font-inter text-base md:text-[18px] leading-relaxed", descriptionColor)}>
           {typeof description === "string" ? <p>{description}</p> : description}

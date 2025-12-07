@@ -77,7 +77,7 @@ export default function Hero() {
               variants={cinematicVariants}
               transition={{ 
                 duration: 0.8, 
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
               }}
               className="overflow-hidden"
             >
@@ -87,7 +87,7 @@ export default function Hero() {
                 transition={{ 
                   duration: 0.8, 
                   delay: 0.3,
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                 }}
                 className="font-cormorant text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-fg-navy mb-6 lg:mb-8 leading-[1.1] tracking-tight"
               >
@@ -117,7 +117,7 @@ export default function Hero() {
               transition={{ 
                 duration: 0.7, 
                 delay: 0.6,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
               }}
               className="overflow-hidden"
             >
@@ -127,7 +127,7 @@ export default function Hero() {
                 transition={{ 
                   duration: 0.7, 
                   delay: 0.7,
-                  ease: [0.16, 1, 0.3, 1],
+                  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
                 }}
                 className="font-inter text-lg md:text-xl lg:text-2xl text-fg-grey max-w-3xl mx-auto leading-relaxed font-normal"
               >
@@ -142,7 +142,7 @@ export default function Hero() {
             transition={{ 
               duration: 0.6, 
               delay: 0.85,
-              ease: [0.16, 1, 0.3, 1],
+              ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
             }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 lg:mb-12"
           >
@@ -193,7 +193,7 @@ export default function Hero() {
             transition={{ 
               duration: 0.6, 
               delay: 1.1,
-              ease: [0.16, 1, 0.3, 1],
+              ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
             }}
             className="font-inter text-sm md:text-base text-fg-grey/70 max-w-2xl mx-auto text-center mb-16 lg:mb-20 leading-relaxed"
           >
@@ -207,7 +207,7 @@ export default function Hero() {
             transition={{ 
               duration: 1, 
               delay: 1.2,
-              ease: [0.16, 1, 0.3, 1],
+              ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
             }}
             className="w-full"
           >
