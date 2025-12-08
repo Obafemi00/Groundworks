@@ -21,7 +21,8 @@ export function validateContactForm(data: ContactFormData): {
     errors.email = "Please enter a valid email address";
   }
 
-  if (!data.message || data.message.trim().length < 10) {
+  // Message is optional, but if provided, it should be at least 10 characters
+  if (data.message && data.message.trim().length > 0 && data.message.trim().length < 10) {
     errors.message = "Message must be at least 10 characters";
   }
 
