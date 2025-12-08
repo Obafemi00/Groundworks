@@ -35,10 +35,10 @@ export default function ContactForm() {
     const apiData = {
       full_name: formData.name,
       email: formData.email,
-      location: formData.location || "",
-      founder_type: formData.description,
-      interest: formData.interest,
-      details: formData.message || "",
+      location: formData.location || null,
+      profile_type: formData.description || null,
+      interest: formData.interest || null,
+      details: formData.message || null,
     };
 
     try {
