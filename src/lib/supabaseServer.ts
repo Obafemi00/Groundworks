@@ -8,8 +8,18 @@ export const supabaseServer = () => {
     throw new Error("Missing Supabase environment variables. Please check NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.");
   }
 
-  return createClient(supabaseUrl, serviceRoleKey, {
-    auth: { persistSession: false }
+  // Create client with service role key - this should bypass RLS automatically
+  // The service role key has admin privileges and should ignore RLS policies
+  const supabase = createClient(supabaseUrl, serviceRoleKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+    db: {
+      schema: "public",
+    },
   });
+
+  return supabase;
 };
 

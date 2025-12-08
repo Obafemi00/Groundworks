@@ -62,6 +62,8 @@ export async function POST(req: Request) {
       
       if (error.message?.includes("Could not find the table") || error.code === "PGRST116") {
         errorMessage = "Table 'Form_submissions' not found. Please verify the table exists in your Supabase dashboard and the name is correct.";
+      } else if (error.message?.includes("row-level security") || error.code === "42501") {
+        errorMessage = "Row-Level Security (RLS) policy is blocking the insert. Please check your Supabase RLS policies or ensure you're using the service role key.";
       } else if (error.message) {
         errorMessage = error.message;
       }
