@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-type ButtonProps = {
+export type ButtonProps = {
   children: ReactNode;
   variant?: "primary" | "secondary" | "accent" | "outline";
   size?: "sm" | "md" | "lg";
@@ -16,7 +16,7 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
-export default function Button({
+function Button({
   children,
   variant = "primary",
   size = "md",
@@ -114,12 +114,21 @@ export default function Button({
     );
   }
 
+  const buttonStyles = variant === "primary" 
+    ? { backgroundColor: "#0E1F36", color: "#FFFFFF" }
+    : variant === "accent"
+    ? { backgroundColor: "#C4A463", color: "#0E1F36" }
+    : variant === "secondary"
+    ? { backgroundColor: "#FFFFFF", color: "#0E1F36", borderColor: "#0E1F36" }
+    : { backgroundColor: "transparent", color: "#0E1F36", borderColor: "#0E1F36" };
+
   return (
     <motion.button
       type={type}
       onClick={onClick}
       disabled={disabled}
       className={classes}
+      style={buttonStyles}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
     >
@@ -127,4 +136,6 @@ export default function Button({
     </motion.button>
   );
 }
+
+export default Button;
 

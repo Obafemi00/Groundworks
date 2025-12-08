@@ -16,9 +16,12 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setSubmitError("");
+    
     const validation = validateContactForm(formData);
     
     if (!validation.isValid) {
@@ -27,12 +30,41 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    // Map form data to Supabase schema
+    const apiData = {
+      full_name: formData.name,
+      email: formData.email,
+      location: formData.location || "",
+      founder_type: formData.description,
+      interest: formData.interest,
+      details: formData.message || "",
+    };
+
+    try {
+      const res = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(apiData),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok || !result.success) {
+        setSubmitError(result.message || "Something went wrong.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Success
       setIsSubmitted(true);
+      setIsSubmitting(false);
       setFormData({ name: "", email: "", location: "", description: "", interest: "", message: "" });
-    }, 1000);
+    } catch (error) {
+      console.error(error);
+      setSubmitError("Network error. Try again.");
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -88,16 +120,67 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="location" className="block font-inter font-medium text-fg-navy mb-2">
-          Location
+          Country
         </label>
-        <input
-          type="text"
+        <select
           id="location"
           value={formData.location}
           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-          className="w-full px-4 py-3 border border-fg-grey rounded-md focus:outline-none focus:ring-2 focus:ring-fg-gold focus:border-fg-gold font-inter text-fg-navy"
-        />
-        <p className="mt-1 text-sm text-fg-grey font-inter">City and country.</p>
+          className="w-full px-4 py-3 border border-fg-grey rounded-md focus:outline-none focus:ring-2 focus:ring-fg-gold focus:border-fg-gold font-inter text-fg-navy bg-white"
+        >
+          <option value="">Select a country</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Albania">Albania</option>
+          <option value="Algeria">Algeria</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Australia">Australia</option>
+          <option value="Austria">Austria</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="Belgium">Belgium</option>
+          <option value="Brazil">Brazil</option>
+          <option value="Canada">Canada</option>
+          <option value="China">China</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Denmark">Denmark</option>
+          <option value="Egypt">Egypt</option>
+          <option value="Finland">Finland</option>
+          <option value="France">France</option>
+          <option value="Germany">Germany</option>
+          <option value="Ghana">Ghana</option>
+          <option value="Greece">Greece</option>
+          <option value="India">India</option>
+          <option value="Indonesia">Indonesia</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Israel">Israel</option>
+          <option value="Italy">Italy</option>
+          <option value="Japan">Japan</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Malaysia">Malaysia</option>
+          <option value="Mexico">Mexico</option>
+          <option value="Netherlands">Netherlands</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="Norway">Norway</option>
+          <option value="Pakistan">Pakistan</option>
+          <option value="Philippines">Philippines</option>
+          <option value="Poland">Poland</option>
+          <option value="Portugal">Portugal</option>
+          <option value="Russia">Russia</option>
+          <option value="Singapore">Singapore</option>
+          <option value="South Africa">South Africa</option>
+          <option value="South Korea">South Korea</option>
+          <option value="Spain">Spain</option>
+          <option value="Sweden">Sweden</option>
+          <option value="Switzerland">Switzerland</option>
+          <option value="Thailand">Thailand</option>
+          <option value="Turkey">Turkey</option>
+          <option value="Ukraine">Ukraine</option>
+          <option value="United Arab Emirates">United Arab Emirates</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="United States">United States</option>
+          <option value="Vietnam">Vietnam</option>
+        </select>
+        <p className="mt-1 text-sm text-fg-grey font-inter">Select your country.</p>
       </div>
 
       <div>
@@ -172,6 +255,11 @@ export default function ContactForm() {
         )}
       </div>
 
+      {submitError && (
+        <div className="bg-red-50 border border-red-200 rounded-md p-4">
+          <p className="text-sm text-red-600 font-inter">{submitError}</p>
+        </div>
+      )}
       <Button type="submit" variant="primary" size="lg" disabled={isSubmitting}>
         {isSubmitting ? "Sending..." : "Submit"}
       </Button>
