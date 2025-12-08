@@ -216,7 +216,7 @@ export default function Hero() {
                 y: useTransform(scrollYProgress, [0, 1], [0, -100]),
               }}
             >
-              <PlaceholderImage className="h-64 md:h-96 lg:h-[500px] xl:h-[600px] rounded-md w-full shadow-2xl" />
+              <PlaceholderImage noMargin={true} className="h-64 md:h-96 lg:h-[500px] xl:h-[600px] rounded-md w-full shadow-2xl" />
             </motion.div>
           </motion.div>
         </motion.div>
