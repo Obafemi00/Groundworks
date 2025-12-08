@@ -18,6 +18,7 @@ export default function PartnershipsPage() {
       <PageHero 
         title="Partnering to develop serious founders." 
         subtitle="Founder Groundworks collaborates with organisations that care about cultivating disciplined, capable founders – not just creating noise."
+        withImage={true}
       />
       <WhoWePartnerWith />
       <PartnershipBenefits />

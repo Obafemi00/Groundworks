@@ -89,21 +89,6 @@ export default function Footer() {
                   <div className="mt-1 w-1 h-1 rounded-full" style={{ backgroundColor: '#C4A463' }}></div>
                   <div>
                     <p className="font-inter text-xs uppercase tracking-wider text-fg-grey mb-1">
-                      PHONE NUMBER
-                    </p>
-                    <a
-                      href={`tel:${SITE_CONFIG.phone}`}
-                      className="font-inter text-sm text-fg-navy hover:text-fg-gold transition-colors duration-200"
-                    >
-                      {SITE_CONFIG.phone}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 w-1 h-1 rounded-full" style={{ backgroundColor: '#C4A463' }}></div>
-                  <div>
-                    <p className="font-inter text-xs uppercase tracking-wider text-fg-grey mb-1">
                       EMAIL ADDRESS
                     </p>
                     <a

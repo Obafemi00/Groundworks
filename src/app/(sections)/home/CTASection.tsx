@@ -22,7 +22,7 @@ export default function CTASection() {
           />
           <StaggerChildren staggerDelay={0.1}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-fg-md">
-              <Button variant="primary" size="lg" href="/programmes">
+              <Button variant="primary" size="lg" href="/contact">
                 Apply to the Foundations Programme
               </Button>
               <Button variant="secondary" size="lg" href="/programmes" className="bg-white/10 border-white/30 text-white hover:bg-white/20">

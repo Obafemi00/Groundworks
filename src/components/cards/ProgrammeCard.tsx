@@ -101,13 +101,16 @@ export default function ProgrammeCard({ programme, className }: ProgrammeCardPro
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-fg-sand/30 mb-6"></div>
-
-        {/* CTA Button */}
-        <Button variant="primary" href={`/programmes#${programme.id}`}>
-          {programme.cta}
-        </Button>
+        {/* CTA Button - Only show for Programme 01 */}
+        {programme.id === "founder-foundations" && (
+          <>
+            {/* Divider */}
+            <div className="h-px bg-fg-sand/30 mb-6"></div>
+            <Button variant="primary" href="/contact">
+              {programme.cta}
+            </Button>
+          </>
+        )}
       </div>
     </FadeUp>
   );

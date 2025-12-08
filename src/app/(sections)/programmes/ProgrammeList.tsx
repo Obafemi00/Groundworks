@@ -14,7 +14,7 @@ export default function ProgrammeList() {
     <>
       <Section>
         <Container>
-          <div className="max-w-4xl mx-auto mb-fg-md">
+          <div className="max-w-4xl mx-auto mb-fg-lg">
             <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
               Founder Groundworks is built around a simple path. You start with foundations, develop through practice, and finish with a clear understanding of where you stand as a founder, and what comes next.
             </p>
@@ -44,7 +44,7 @@ export default function ProgrammeList() {
               descriptionColor="text-fg-sand"
             />
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-fg-md">
-              <Button variant="primary" size="lg" href="/programmes">
+              <Button variant="primary" size="lg" href="/contact">
                 Apply to the Foundations Programme
               </Button>
             </div>

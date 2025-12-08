@@ -44,7 +44,7 @@ export default function Hero() {
   return (
     <section 
       ref={sectionRef}
-      className="bg-fg-white pt-20 pb-20 lg:pt-24 lg:pb-32 relative overflow-hidden"
+      className="bg-fg-white pt-[76px] pb-20 lg:pt-[88px] lg:pb-32 relative overflow-hidden"
     >
       {/* Animated background elements */}
       <motion.div
@@ -160,7 +160,7 @@ export default function Hero() {
               <Button 
                 variant="accent" 
                 size="lg" 
-                href="/programmes"
+                href="/contact"
               >
                 Apply to the Foundations Programme
               </Button>

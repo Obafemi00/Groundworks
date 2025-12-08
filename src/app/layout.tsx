@@ -4,10 +4,19 @@ import Header from "@/app/(components)/Header";
 import Footer from "@/app/(components)/Footer";
 import { generatePageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = generatePageMetadata({
+const baseMetadata = generatePageMetadata({
   title: "Home",
   description: "Building Founders from the Ground Up. Institutional support for founders who want to build responsibly and sustainably.",
 });
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  icons: {
+    icon: "/logo/Founder Groundworks Transparent White.png",
+    shortcut: "/logo/Founder Groundworks Transparent White.png",
+    apple: "/logo/Founder Groundworks Transparent White.png",
+  },
+};
 
 export default function RootLayout({
   children,

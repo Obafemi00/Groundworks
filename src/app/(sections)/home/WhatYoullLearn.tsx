@@ -29,7 +29,7 @@ export default function WhatYoullLearn() {
             <div className="space-y-4">
               {outcomes.map((outcome, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <span className="mt-1 text-fg-gold flex-shrink-0 font-inter text-lg">➤</span>
+                  <span className="text-fg-gold flex-shrink-0 font-inter text-lg leading-[1.6]">➤</span>
                   <p className="font-inter text-base md:text-[18px] text-fg-sand leading-relaxed flex-1">
                     {outcome}
                   </p>

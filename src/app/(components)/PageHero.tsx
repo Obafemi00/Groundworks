@@ -18,7 +18,7 @@ export default function PageHero({ title, subtitle, background = "navy", withIma
   };
 
   return (
-    <section className={`${!withImage ? bgClasses[background] : ""} relative overflow-hidden ${withImage ? "min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center" : "py-section"}`}>
+    <section className={`${!withImage ? bgClasses[background] : ""} relative overflow-hidden ${withImage ? "min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center mb-[120px] md:mb-[140px] lg:mb-[160px]" : "py-section mb-[120px] md:mb-[140px] lg:mb-[160px]"}`}>
       {/* Full cover image background */}
       {withImage && (
         <>
