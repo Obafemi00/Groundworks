@@ -51,8 +51,11 @@ export default function ContactForm() {
       const result = await res.json();
 
       if (!res.ok || !result.success) {
-        setSubmitError(result.message || "Something went wrong.");
+        // Show more detailed error in development, user-friendly in production
+        const errorMsg = result.message || "Something went wrong. Please try again.";
+        setSubmitError(errorMsg);
         setIsSubmitting(false);
+        console.error("Form submission error:", result);
         return;
       }
 
@@ -120,13 +123,14 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="location" className="block font-inter font-medium text-fg-navy mb-2">
-          Country
+          Country *
         </label>
         <select
           id="location"
           value={formData.location}
           onChange={(e) => setFormData({ ...formData, location: e.target.value })}
           className="w-full px-4 py-3 border border-fg-grey rounded-md focus:outline-none focus:ring-2 focus:ring-fg-gold focus:border-fg-gold font-inter text-fg-navy bg-white"
+          required
         >
           <option value="">Select a country</option>
           <option value="Afghanistan">Afghanistan</option>
