@@ -84,7 +84,11 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <>
+      <p className="font-inter text-base md:text-[18px] text-fg-grey mb-6 leading-relaxed">
+        Please complete the form below and we will respond with the most appropriate next step.
+      </p>
+      <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className="block font-inter font-medium text-fg-navy mb-2">
           Full name *
@@ -268,6 +272,7 @@ export default function ContactForm() {
         {isSubmitting ? "Sending..." : "Submit"}
       </Button>
     </form>
+    </>
   );
 }
 

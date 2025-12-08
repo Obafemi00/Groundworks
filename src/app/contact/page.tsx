@@ -24,9 +24,6 @@ export default function ContactPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <p className="font-inter text-base md:text-[18px] text-fg-grey mb-6 leading-relaxed">
-                Please complete the form below and we will respond with the most appropriate next step.
-              </p>
               <ContactForm />
             </div>
           </div>
