@@ -7,9 +7,10 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   background?: "navy" | "white" | "sand";
+  withImage?: boolean;
 };
 
-export default function PageHero({ title, subtitle, background = "navy" }: PageHeroProps) {
+export default function PageHero({ title, subtitle, background = "navy", withImage = false }: PageHeroProps) {
   const bgClasses = {
     navy: "bg-fg-navy text-white",
     white: "bg-fg-white text-fg-navy",
@@ -17,13 +18,31 @@ export default function PageHero({ title, subtitle, background = "navy" }: PageH
   };
 
   return (
-    <section className={`${bgClasses[background]} py-section relative overflow-hidden`}>
-      <div className="max-w-[1200px] mx-auto px-4">
-        <div className="max-w-3xl">
+    <section className={`${!withImage ? bgClasses[background] : ""} relative overflow-hidden ${withImage ? "min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center" : "py-section"}`}>
+      {/* Full cover image background */}
+      {withImage && (
+        <>
+          <div className="absolute inset-0 z-0">
+            <div 
+              className="w-full h-full bg-gray-300 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          </div>
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 z-10 bg-fg-navy/50" />
+        </>
+      )}
+      
+      {/* Content */}
+      <div className={`${withImage ? "relative z-20" : ""} max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8 ${withImage ? "w-full py-20 md:py-32 lg:py-40" : ""}`}>
+        <div className={`${withImage ? "max-w-3xl" : "max-w-3xl"} ${withImage ? "text-white" : ""}`}>
           <FadeUp delay={0.1} duration={0.8}>
             <SplitText
               as="h1"
-              className="font-cormorant text-4xl md:text-5xl font-semibold mb-6 tracking-tight"
+              className={`font-cormorant text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 tracking-tight ${withImage ? "text-white" : ""}`}
               staggerDelay={0.06}
             >
               {title}
@@ -31,8 +50,12 @@ export default function PageHero({ title, subtitle, background = "navy" }: PageH
           </FadeUp>
           {subtitle && (
             <FadeUp delay={0.3} duration={0.7}>
-              <p className={`font-inter text-base md:text-[18px] leading-relaxed ${
-                background === "navy" ? "text-fg-sand" : "text-fg-grey"
+              <p className={`font-inter text-base md:text-[18px] lg:text-xl leading-relaxed ${
+                withImage 
+                  ? "text-white/90" 
+                  : background === "navy" 
+                    ? "text-fg-sand" 
+                    : "text-fg-grey"
               }`}>
                 {subtitle}
               </p>

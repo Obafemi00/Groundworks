@@ -18,6 +18,7 @@ export default function ContactPage() {
       <PageHero 
         title="Get in touch." 
         subtitle="Whether you are a first-time founder, an organisation, or an institution, we'd like to hear from you."
+        withImage={true}
       />
       <Section>
         <Container>

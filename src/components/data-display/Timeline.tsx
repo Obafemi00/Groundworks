@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import FadeUp from "@/components/animations/FadeUp";
@@ -22,9 +22,12 @@ type TimelineItemComponentProps = {
   index: number;
   scrollProgress: any;
   totalItems: number;
+  markerRef?: (node: HTMLDivElement | null) => void;
+  isFirst?: boolean;
+  isLast?: boolean;
 };
 
-function TimelineItemComponent({ item, index, scrollProgress, totalItems }: TimelineItemComponentProps) {
+function TimelineItemComponent({ item, index, scrollProgress, totalItems, markerRef, isFirst, isLast }: TimelineItemComponentProps) {
   // Calculate when this item becomes active (based on scroll position)
   const itemStart = index / totalItems;
   const itemEnd = (index + 1) / totalItems;
@@ -36,106 +39,38 @@ function TimelineItemComponent({ item, index, scrollProgress, totalItems }: Time
     [0, 0.5, 1]
   );
 
-  // Color transitions
-  const borderColor = useTransform(
+  // Color transitions - square marker changes from navy to gold
+  const markerColor = useTransform(
     itemProgress,
     [0, 0.3, 1],
     ["#0E1F36", "#C4A463", "#C4A463"]
   );
   
+  // Text color transitions
   const textColor = useTransform(
     itemProgress,
     [0, 0.3, 1],
     ["#0E1F36", "#C4A463", "#C4A463"]
   );
-  
-  const numberColor = useTransform(
-    itemProgress,
-    [0, 0.3, 1],
-    ["#C4A463", "#0E1F36", "#0E1F36"]
-  );
-
-  // Rotating accent ring
-  const rotation = useTransform(itemProgress, [0, 1], [0, 360]);
-  
-  // Ring opacity
-  const ringOpacity = useTransform(
-    itemProgress,
-    [0, 0.2, 0.8, 1],
-    [0.3, 0.6, 0.6, 0.3]
-  );
-  
-  // Glow intensity
-  const glowOpacity = useTransform(
-    itemProgress,
-    [0, 0.3, 0.7, 1],
-    [0.1, 0.3, 0.2, 0.1]
-  );
 
   return (
     <FadeUp delay={index * 0.1} duration={0.6}>
       <div className="relative flex gap-6 md:gap-8">
-        {/* Timeline dot with number and rolling accent */}
-        <div className="relative z-10 flex-shrink-0">
-          {/* Outer rotating ring - the "rolling" accent */}
+        {/* Square marker on the vertical line */}
+        <div 
+          ref={markerRef}
+          className="relative z-10 flex-shrink-0"
+        >
           <motion.div
-            className="absolute -inset-2 rounded-full"
+            className="w-3 h-3 md:w-4 md:h-4"
             style={{
-              rotate: rotation,
-            }}
-          >
-            <motion.div
-              className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2"
-              style={{
-                borderColor: borderColor,
-                borderStyle: "solid",
-                opacity: ringOpacity,
-              }}
-            />
-          </motion.div>
-
-          {/* Inner circle with number */}
-          <motion.div
-            className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center shadow-md relative z-10"
-            style={{
-              borderWidth: "2px",
-              borderStyle: "solid",
-              borderColor: borderColor,
-            }}
-          >
-            {item.number !== undefined ? (
-              <motion.span
-                className="font-cormorant text-xl md:text-2xl font-semibold"
-                style={{
-                  color: numberColor,
-                }}
-              >
-                {item.number}
-              </motion.span>
-            ) : (
-              <motion.div
-                className="w-3 h-3 md:w-4 md:h-4 rounded-full"
-                style={{
-                  backgroundColor: numberColor,
-                }}
-              />
-            )}
-          </motion.div>
-
-          {/* Glow effect that intensifies with progress */}
-          <motion.div
-            className="absolute inset-0 rounded-full blur-md -z-10"
-            style={{
-              backgroundColor: useTransform(
-                glowOpacity,
-                (opacity) => `rgba(196, 164, 99, ${opacity})`
-              ),
+              backgroundColor: markerColor,
             }}
           />
         </div>
 
         {/* Content */}
-        <div className="flex-1 pt-1">
+        <div className="flex-1 pt-0.5">
           <motion.h3
             className="font-cormorant text-2xl md:text-3xl font-semibold mb-3 leading-tight"
             style={{
@@ -155,28 +90,80 @@ function TimelineItemComponent({ item, index, scrollProgress, totalItems }: Time
 
 export default function Timeline({ items, className, variant = "default" }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const firstMarkerRef = useRef<HTMLDivElement>(null);
+  const lastMarkerRef = useRef<HTMLDivElement>(null);
+  const [lineStart, setLineStart] = useState(0);
+  const [lineEnd, setLineEnd] = useState(0);
+  const [lineHeight, setLineHeight] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 0.8", "end 0.2"],
   });
 
-  // Calculate line fill height based on scroll
-  const lineFillHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  // Calculate marker positions when component mounts or resizes
+  useEffect(() => {
+    const calculateLinePositions = () => {
+      if (firstMarkerRef.current && lastMarkerRef.current && containerRef.current) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const firstRect = firstMarkerRef.current.getBoundingClientRect();
+        const lastRect = lastMarkerRef.current.getBoundingClientRect();
+
+        // Calculate positions relative to container
+        const firstTop = firstRect.top - containerRect.top + firstRect.height / 2;
+        const lastTop = lastRect.top - containerRect.top + lastRect.height / 2;
+
+        setLineStart(firstTop);
+        setLineEnd(lastTop);
+        setLineHeight(lastTop - firstTop);
+      }
+    };
+
+    calculateLinePositions();
+    window.addEventListener("resize", calculateLinePositions);
+    
+    // Recalculate after a short delay to ensure all elements are rendered
+    const timeout = setTimeout(calculateLinePositions, 100);
+
+    return () => {
+      window.removeEventListener("resize", calculateLinePositions);
+      clearTimeout(timeout);
+    };
+  }, [items.length]);
+
+  // Calculate line fill height based on scroll (from 0 to lineHeight)
+  const lineFillHeight = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, lineHeight]
+  );
 
   return (
     <div ref={containerRef} className={cn("relative", className)}>
-      {/* Vertical line background (navy) */}
-      <div className="absolute left-6 md:left-8 top-12 md:top-16 bottom-12 md:bottom-16 w-[1px] bg-fg-navy/20"></div>
-      
-      {/* Vertical line fill (gold) - animated based on scroll */}
-      <motion.div
-        className="absolute left-6 md:left-8 top-12 md:top-16 w-[1px] bg-gradient-to-b from-fg-gold via-fg-gold to-fg-gold/60 origin-top"
-        style={{
-          height: lineFillHeight,
-        }}
-      />
+      {/* Vertical connecting line (gold) - starts at first marker, ends at last marker */}
+      {lineHeight > 0 && (
+        <>
+          {/* Background line (navy) - full length */}
+          <div 
+            className="absolute left-[5px] md:left-[6px] w-[1px] bg-fg-navy/30"
+            style={{
+              top: `${lineStart}px`,
+              height: `${lineHeight}px`,
+            }}
+          />
+          
+          {/* Animated fill line (gold) - fills based on scroll */}
+          <motion.div
+            className="absolute left-[5px] md:left-[6px] w-[1px] bg-fg-gold origin-top"
+            style={{
+              top: `${lineStart}px`,
+              height: lineFillHeight,
+            }}
+          />
+        </>
+      )}
 
-      <div className="space-y-12 md:space-y-16">
+      <div className="space-y-12 md:space-y-16 pl-6 md:pl-8">
         {items.map((item, index) => (
           <TimelineItemComponent
             key={index}
@@ -184,6 +171,9 @@ export default function Timeline({ items, className, variant = "default" }: Time
             index={index}
             scrollProgress={scrollYProgress}
             totalItems={items.length}
+            markerRef={index === 0 ? (node) => { firstMarkerRef.current = node; } : index === items.length - 1 ? (node) => { lastMarkerRef.current = node; } : undefined}
+            isFirst={index === 0}
+            isLast={index === items.length - 1}
           />
         ))}
       </div>

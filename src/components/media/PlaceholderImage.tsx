@@ -10,7 +10,7 @@ export default function PlaceholderImage({ className = "" }: { className?: strin
       <FadeUp delay={0.2} duration={0.8}>
         <div
           className={cn(
-            "w-full h-64 bg-fg-sand rounded-md shadow-lg",
+            "w-full h-64 bg-gray-300 rounded-md shadow-lg",
             "transition-all duration-700",
             className
           )}

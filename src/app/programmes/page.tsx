@@ -15,6 +15,7 @@ export default function ProgrammesPage() {
       <PageHero 
         title="Programmes designed for first-time founders." 
         subtitle="Three stages. One goal: helping you operate as a serious founder, from the very beginning."
+        withImage={true}
       />
       <ProgrammeList />
     </div>

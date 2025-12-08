@@ -19,6 +19,7 @@ export default function AboutPage() {
       <PageHero 
         title="An institute for first-time founders." 
         subtitle="Founder Groundworks exists to give serious, early-stage founders the structure, language and discipline they were never formally taught."
+        withImage={true}
       />
       <MissionVision />
       <WhyWeExist />
