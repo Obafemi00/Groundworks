@@ -19,6 +19,8 @@ export default function PartnershipsPage() {
         title="Partnering to develop serious founders." 
         subtitle="Founder Groundworks collaborates with organisations that care about cultivating disciplined, capable founders – not just creating noise."
         withImage={true}
+        imageSrc="/images/founder-groundworks/partnerships/partnerships-01.jpg"
+        imageAlt="Professional collaboration and partnership meeting"
       />
       <WhoWePartnerWith />
       <PartnershipBenefits />

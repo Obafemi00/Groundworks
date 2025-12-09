@@ -5,7 +5,7 @@ import Container from "@/components/layout/Container";
 import HeadingBlock from "@/components/typography/HeadingBlock";
 import Subsection from "@/components/layout/Subsection";
 import SlideIn from "@/components/animations/SlideIn";
-import PlaceholderImage from "@/components/media/PlaceholderImage";
+import SectionImage from "@/components/media/SectionImage";
 
 export default function MissionVision() {
   return (
@@ -46,7 +46,11 @@ export default function MissionVision() {
           </SlideIn>
         </div>
         <div className="mt-fg-lg">
-          <PlaceholderImage className="h-64 md:h-96 lg:h-[400px]" />
+          <SectionImage
+            src="/images/founder-groundworks/misc/misc-02.jpg"
+            alt="Founder Groundworks mission and vision in action"
+            className="h-64 md:h-96 lg:h-[400px]"
+          />
         </div>
       </Container>
     </Section>

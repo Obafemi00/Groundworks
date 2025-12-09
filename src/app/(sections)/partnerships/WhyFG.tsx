@@ -4,7 +4,7 @@ import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import HeadingBlock from "@/components/typography/HeadingBlock";
 import StaggerChildren from "@/components/animations/StaggerChildren";
-import PlaceholderImage from "@/components/media/PlaceholderImage";
+import SectionImage from "@/components/media/SectionImage";
 
 export default function WhyFG() {
   const benefits = [
@@ -43,7 +43,11 @@ export default function WhyFG() {
           </div>
         </StaggerChildren>
         <div className="mt-fg-lg">
-          <PlaceholderImage className="h-64 md:h-96 lg:h-[400px]" />
+          <SectionImage
+            src="/images/founder-groundworks/partnerships/partnerships-02.jpg"
+            alt="Serious partnership collaboration for founder development"
+            className="h-64 md:h-96 lg:h-[400px]"
+          />
         </div>
       </Container>
     </Section>

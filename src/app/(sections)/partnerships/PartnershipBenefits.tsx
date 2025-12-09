@@ -4,7 +4,7 @@ import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import HeadingBlock from "@/components/typography/HeadingBlock";
 import StaggerChildren from "@/components/animations/StaggerChildren";
-import PlaceholderImage from "@/components/media/PlaceholderImage";
+import SectionImage from "@/components/media/SectionImage";
 
 export default function PartnershipBenefits() {
   const offerings = [
@@ -51,7 +51,11 @@ export default function PartnershipBenefits() {
           </div>
         </StaggerChildren>
         <div className="mt-fg-lg">
-          <PlaceholderImage className="h-64 md:h-96 lg:h-[400px]" />
+          <SectionImage
+            src="/images/founder-groundworks/partnerships/partnerships-02.jpg"
+            alt="Structured founder development through partnerships"
+            className="h-64 md:h-96 lg:h-[400px]"
+          />
         </div>
       </Container>
     </Section>

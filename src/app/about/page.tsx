@@ -20,6 +20,8 @@ export default function AboutPage() {
         title="An institute for first-time founders." 
         subtitle="Founder Groundworks exists to give serious, early-stage founders the structure, language and discipline they were never formally taught."
         withImage={true}
+        imageSrc="/images/founder-groundworks/about/about-01.jpg"
+        imageAlt="Diverse founders collaborating in a professional setting"
       />
       <MissionVision />
       <WhyWeExist />

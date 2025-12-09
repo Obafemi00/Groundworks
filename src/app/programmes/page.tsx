@@ -16,6 +16,8 @@ export default function ProgrammesPage() {
         title="Programmes designed for first-time founders." 
         subtitle="Three stages. One goal: helping you operate as a serious founder, from the very beginning."
         withImage={true}
+        imageSrc="/images/founder-groundworks/programmes/programmes-01.jpg"
+        imageAlt="Founders participating in a structured workshop session"
       />
       <ProgrammeList />
     </div>

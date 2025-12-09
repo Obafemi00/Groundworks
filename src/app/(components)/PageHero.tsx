@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import FadeUp from "@/components/animations/FadeUp";
 import SplitText from "@/components/animations/SplitText";
 
@@ -8,9 +9,11 @@ type PageHeroProps = {
   subtitle?: string;
   background?: "navy" | "white" | "sand";
   withImage?: boolean;
+  imageSrc?: string;
+  imageAlt?: string;
 };
 
-export default function PageHero({ title, subtitle, background = "navy", withImage = false }: PageHeroProps) {
+export default function PageHero({ title, subtitle, background = "navy", withImage = false, imageSrc, imageAlt = "" }: PageHeroProps) {
   const bgClasses = {
     navy: "bg-fg-navy text-white",
     white: "bg-fg-white text-fg-navy",
@@ -20,15 +23,15 @@ export default function PageHero({ title, subtitle, background = "navy", withIma
   return (
     <section className={`${!withImage ? bgClasses[background] : ""} relative overflow-hidden ${withImage ? "min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center mb-[120px] md:mb-[140px] lg:mb-[160px]" : "py-section mb-[120px] md:mb-[140px] lg:mb-[160px]"}`}>
       {/* Full cover image background */}
-      {withImage && (
+      {withImage && imageSrc && (
         <>
           <div className="absolute inset-0 z-0">
-            <div 
-              className="w-full h-full bg-gray-300 bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              priority
             />
           </div>
           {/* Overlay for text readability */}

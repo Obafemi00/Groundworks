@@ -7,7 +7,7 @@ import Button from "@/components/buttons/Button";
 import { programmes } from "@/data/programmes";
 import HeadingBlock from "@/components/typography/HeadingBlock";
 import StaggerChildren from "@/components/animations/StaggerChildren";
-import PlaceholderImage from "@/components/media/PlaceholderImage";
+import SectionImage from "@/components/media/SectionImage";
 
 export default function ProgrammeList() {
   return (
@@ -27,7 +27,11 @@ export default function ProgrammeList() {
             </div>
           </StaggerChildren>
           <div className="mt-fg-lg">
-            <PlaceholderImage className="h-64 md:h-96 lg:h-[400px]" />
+            <SectionImage
+              src="/images/founder-groundworks/programmes/programmes-04.jpg"
+              alt="Founders engaged in programme activities and learning"
+              className="h-64 md:h-96 lg:h-[400px]"
+            />
           </div>
         </Container>
       </Section>

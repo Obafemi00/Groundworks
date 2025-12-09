@@ -2,9 +2,9 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import Container from "@/components/layout/Container";
 import Button from "@/components/buttons/Button";
-import PlaceholderImage from "@/components/media/PlaceholderImage";
 
 const cinematicVariants = {
   hidden: { 
@@ -38,7 +38,6 @@ export default function Hero() {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
   return (
@@ -65,7 +64,7 @@ export default function Hero() {
       
       <Container>
         <motion.div
-          style={{ y, opacity, scale }}
+          style={{ y, scale }}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -97,7 +96,7 @@ export default function Hero() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="inline-block"
                 >
-                  Where first-time founders
+                  Where first time founders
                 </motion.span>
                 <br className="hidden sm:block" />
                 <motion.span
@@ -200,7 +199,7 @@ export default function Hero() {
             Built for early founders, career switchers, and international talent preparing to build serious businesses.
           </motion.p>
 
-          {/* Placeholder Image - Cinematic parallax effect */}
+          {/* Hero Image - Cinematic parallax effect */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 60 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -216,7 +215,16 @@ export default function Hero() {
                 y: useTransform(scrollYProgress, [0, 1], [0, -100]),
               }}
             >
-              <PlaceholderImage noMargin={true} className="h-64 md:h-96 lg:h-[500px] xl:h-[600px] rounded-md w-full shadow-2xl" />
+              <div className="h-64 md:h-96 lg:h-[500px] xl:h-[600px] rounded-md w-full shadow-2xl overflow-hidden">
+                <Image
+                  src="/images/founder-groundworks/hero/hero-01.jpg"
+                  alt="Founders collaborating in a workshop setting"
+                  width={3648}
+                  height={5472}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
