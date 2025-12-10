@@ -32,7 +32,7 @@ export default function WhatWeDo() {
         <div className="mt-fg-lg">
           <SectionImage
             src="/images/founder-groundworks/about/about-02.jpg"
-            alt="Founders in a structured learning environment"
+            alt="Diverse first-time founders participating in structured learning and training at Founder Groundworks"
             className="h-64 md:h-96 lg:h-[400px]"
           />
         </div>

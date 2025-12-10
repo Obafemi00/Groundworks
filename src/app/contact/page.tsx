@@ -8,8 +8,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Contact",
-  description: "Get in touch to learn more about our programmes and how we can help you build strong foundations.",
+  description: "Get in touch with Founder Groundworks to learn more about our programmes and how we can help you build strong foundations. Whether you're a first-time founder, organisation, or institution, we'd like to hear from you.",
   path: "/contact",
+  image: "/images/founder-groundworks/contact/contact-hero.jpg",
+  imageAlt: "Welcoming professional workspace for collaboration at Founder Groundworks",
 });
 
 export default function ContactPage() {

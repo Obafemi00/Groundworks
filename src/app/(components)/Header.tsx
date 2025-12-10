@@ -44,7 +44,7 @@ export default function Header() {
             </motion.div>
 
             {/* Center: Navigation Links */}
-            <nav className="hidden lg:flex items-center flex-1 justify-center gap-8 xl:gap-12">
+            <nav className="hidden lg:flex items-center flex-1 justify-center gap-8 xl:gap-12" aria-label="Main navigation">
               {navigationLinks.filter(link => link.href !== '/contact').map((link, index) => (
                 <motion.div
                   key={link.href}
@@ -159,7 +159,7 @@ export default function Header() {
               className="fixed top-0 left-0 right-0 bg-white z-50 shadow-lg lg:hidden"
             >
               <div className="max-w-[1400px] mx-auto px-6 py-8">
-                <nav className="flex flex-col gap-4 mb-6">
+                <nav className="flex flex-col gap-4 mb-6" aria-label="Mobile navigation">
                   {navigationLinks.map((link, index) => (
                     <motion.div
                       key={link.href}

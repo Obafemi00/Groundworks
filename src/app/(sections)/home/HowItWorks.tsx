@@ -37,10 +37,10 @@ export default function HowItWorks() {
         <div className="mt-fg-md max-w-4xl mx-auto">
           <Timeline items={steps} />
         </div>
-        <div className="mt-fg-lg">
+        <div className="mt-fg-sm">
           <SectionImage
             src="/images/founder-groundworks/programmes/programmes-03.jpg"
-            alt="Founders following a structured path through workshops and clinics"
+            alt="First-time founders progressing through structured workshops, clinics, and readiness reviews"
             className="h-64 md:h-96 lg:h-[400px]"
           />
         </div>

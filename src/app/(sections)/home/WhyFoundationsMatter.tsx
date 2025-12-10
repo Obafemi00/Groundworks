@@ -29,7 +29,7 @@ export default function WhyFoundationsMatter() {
         <div className="mt-fg-lg">
           <SectionImage
             src="/images/founder-groundworks/programmes/programmes-02.jpg"
-            alt="Focused founders working on building their foundations"
+            alt="Serious first-time founders focused on building strong business foundations through disciplined learning"
             className="h-64 md:h-96 lg:h-[400px]"
           />
         </div>

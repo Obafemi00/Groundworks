@@ -52,7 +52,7 @@ export default function GroundworksMethod() {
         <div className="mt-fg-lg">
           <SectionImage
             src="/images/founder-groundworks/programmes/programmes-01.jpg"
-            alt="The Groundworks Method in practice - structured founder development"
+            alt="Founders applying the Groundworks Method through structured training and practical frameworks"
             className="h-64 md:h-96 lg:h-[400px]"
           />
         </div>

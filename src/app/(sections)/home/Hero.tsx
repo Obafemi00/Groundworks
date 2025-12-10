@@ -218,7 +218,7 @@ export default function Hero() {
               <div className="h-64 md:h-96 lg:h-[500px] xl:h-[600px] rounded-md w-full shadow-2xl overflow-hidden">
                 <Image
                   src="/images/founder-groundworks/hero/hero-01.jpg"
-                  alt="Founders collaborating in a workshop setting"
+                  alt="Diverse first-time founders collaborating in a professional workshop setting at Founder Groundworks"
                   width={3648}
                   height={5472}
                   className="object-cover w-full h-full"

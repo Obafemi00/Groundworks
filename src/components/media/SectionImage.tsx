@@ -42,6 +42,7 @@ export default function SectionImage({
               height={height}
               className="object-cover w-full h-full"
               priority={priority}
+              loading={priority ? undefined : "lazy"}
             />
           </div>
         </FadeUp>

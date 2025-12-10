@@ -5,8 +5,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "Programmes",
-  description: "Explore our comprehensive programmes designed to build strong foundations for founders at every stage.",
+  description: "Explore our comprehensive programmes designed to build strong foundations for founders at every stage. From the Foundations Programme to Groundworks Clinics and Founder Readiness Reviews.",
   path: "/programmes",
+  image: "/images/founder-groundworks/programmes/programmes-01.jpg",
+  imageAlt: "Founders participating in a structured workshop session at Founder Groundworks",
 });
 
 export default function ProgrammesPage() {

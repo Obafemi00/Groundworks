@@ -16,7 +16,7 @@ export default function WhatYoullLearn() {
   ];
 
   return (
-    <Section background="navy">
+    <Section background="white">
       <Container>
         <HeadingBlock
           title="By the end, you will:"
@@ -30,7 +30,7 @@ export default function WhatYoullLearn() {
               {outcomes.map((outcome, index) => (
                 <div key={index} className="flex items-start gap-4">
                   <span className="text-fg-gold flex-shrink-0 font-inter text-lg leading-[1.6]">➤</span>
-                  <p className="font-inter text-base md:text-[18px] text-fg-sand leading-relaxed flex-1">
+                  <p className="font-inter text-base md:text-[18px] leading-relaxed flex-1" style={{ color: "#0E1F36" }}>
                     {outcome}
                   </p>
                 </div>

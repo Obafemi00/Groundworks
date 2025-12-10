@@ -9,8 +9,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "About",
-  description: "Learn about Founder Groundworks, our mission, vision, and the values that guide everything we do.",
+  description: "Learn about Founder Groundworks, our mission, vision, and the values that guide everything we do. An institute dedicated to building foundational capability in first-time founders through structured education and disciplined guidance.",
   path: "/about",
+  image: "/images/founder-groundworks/about/about-01.jpg",
+  imageAlt: "Diverse founders collaborating in a professional setting at Founder Groundworks",
 });
 
 export default function AboutPage() {
