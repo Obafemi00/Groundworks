@@ -15,7 +15,7 @@ export default function ProgrammeList() {
       <Section>
         <Container>
           <div className="max-w-4xl mx-auto mb-fg-lg">
-            <p className="font-inter text-base md:text-[18px] leading-relaxed" style={{ color: "#0E1F36" }}>
+            <p className="font-inter text-base md:text-[18px] leading-relaxed mb-8" style={{ color: "#0E1F36" }}>
               Founder Groundworks is built around a simple path. You start with foundations, develop through practice, and finish with a clear understanding of where you stand as a founder, and what comes next.
             </p>
           </div>

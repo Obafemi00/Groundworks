@@ -23,7 +23,7 @@ export default function WhatYoullLearn() {
           subtitle="Outcomes"
           align="center"
           maxWidth="lg"
-          subtitleClassName="md:!mt-[50px] lg:!mt-[50px]"
+          subtitleClassName="md:!mt-[70px] lg:!mt-[70px]"
           subtitleStyle={{ marginTop: "48px" }}
         />
         <StaggerChildren staggerDelay={0.1}>

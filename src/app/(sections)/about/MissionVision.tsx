@@ -16,6 +16,8 @@ export default function MissionVision() {
           align="center"
           maxWidth="lg"
           animate={false}
+          subtitleClassName="md:!mt-[70px] lg:!mt-[70px]"
+          subtitleStyle={{ marginTop: "48px" }}
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-fg-lg">
           {/* Text - Left on desktop, first on mobile */}

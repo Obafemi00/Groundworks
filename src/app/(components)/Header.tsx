@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useMobileMenu } from "@/hooks/useMobileMenu";
 import { useScroll } from "@/hooks/useScroll";
 import { navigationLinks } from "@/data/navigation";
@@ -10,6 +11,7 @@ import { navigationLinks } from "@/data/navigation";
 export default function Header() {
   const { isOpen, toggle, close } = useMobileMenu();
   const { isScrolled } = useScroll();
+  const pathname = usePathname();
 
   return (
     <>
@@ -36,7 +38,7 @@ export default function Header() {
                   alt="Founder Groundworks"
                   width={200}
                   height={60}
-                  className="h-12 lg:h-16 w-auto object-contain"
+                  className="h-16 lg:h-20 w-auto object-contain"
                   priority
                   unoptimized
                 />
@@ -45,27 +47,33 @@ export default function Header() {
 
             {/* Center: Navigation Links */}
             <nav className="hidden lg:flex items-center flex-1 justify-center gap-8 xl:gap-12" aria-label="Main navigation">
-              {navigationLinks.map((link, index) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 + 0.2, duration: 0.3 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="relative font-inter text-sm font-medium text-fg-navy uppercase tracking-wider py-2 transition-colors duration-200 hover:text-fg-gold"
+              {navigationLinks.map((link, index) => {
+                const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 + 0.2, duration: 0.3 }}
                   >
-                    {link.label}
-                    <motion.span
-                      className="absolute bottom-0 left-0 h-[1px] bg-fg-gold"
-                      initial={{ width: 0 }}
-                      whileHover={{ width: "100%" }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={link.href}
+                      className={`relative font-inter text-sm font-medium uppercase tracking-wider py-2 transition-colors duration-200 ${
+                        isActive ? "text-fg-gold" : "text-fg-navy hover:text-fg-gold"
+                      }`}
+                    >
+                      {link.label}
+                      <motion.span
+                        className="absolute bottom-0 left-0 h-[1px] bg-fg-gold"
+                        initial={{ width: 0 }}
+                        animate={{ width: isActive ? "100%" : 0 }}
+                        whileHover={{ width: "100%" }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </nav>
 
             {/* Right: CTA Button */}
@@ -180,22 +188,29 @@ export default function Header() {
                   </button>
                 </div>
                 <nav className="flex flex-col gap-4 mb-6" aria-label="Mobile navigation">
-                  {navigationLinks.map((link, index) => (
-                    <motion.div
-                      key={link.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.2 }}
-                    >
-                      <Link
-                        href={link.href}
-                        className="block font-inter text-base font-medium text-fg-navy uppercase tracking-wide py-3 px-4 rounded-md transition-colors duration-200 hover:bg-fg-sand/50"
-                        onClick={close}
+                  {navigationLinks.map((link, index) => {
+                    const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
+                    return (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05, duration: 0.2 }}
                       >
-                        {link.label}
-                      </Link>
-                    </motion.div>
-                  ))}
+                        <Link
+                          href={link.href}
+                          className={`block font-inter text-base font-medium uppercase tracking-wide py-3 px-4 rounded-md transition-colors duration-200 ${
+                            isActive 
+                              ? "text-fg-gold border-l-2 border-fg-gold" 
+                              : "text-fg-navy hover:bg-fg-sand/50"
+                          }`}
+                          onClick={close}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
                 </nav>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

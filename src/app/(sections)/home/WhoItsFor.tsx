@@ -22,7 +22,7 @@ export default function WhoItsFor() {
           subtitle="Who we serve"
           align="center"
           maxWidth="lg"
-          subtitleClassName="mt-[50px] md:!mt-0"
+          subtitleClassName="mt-[50px] md:!mt-[70px] lg:!mt-[70px]"
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-fg-md">
           {/* Text - Left on desktop, first on mobile */}

@@ -15,7 +15,7 @@ export default function WhyFoundationsMatter() {
           subtitle="Why foundations first?"
           align="center"
           maxWidth="lg"
-          subtitleClassName="md:!mt-[50px] lg:!mt-[50px]"
+          subtitleClassName="md:!mt-[70px] lg:!mt-[70px]"
           subtitleStyle={{ marginTop: "48px" }}
           titleClassName="!mb-[10px]"
           titleStyle={{ marginBottom: "10px" }}

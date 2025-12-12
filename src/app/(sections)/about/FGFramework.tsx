@@ -29,9 +29,13 @@ export default function FGFramework() {
           subtitle="The Founder Groundworks Framework"
           align="center"
           maxWidth="lg"
+          titleClassName="md:!mt-[20px] lg:!mt-[20px]"
+          titleStyle={{ marginTop: "20px" }}
+          subtitleClassName="md:!mt-[100px] lg:!mt-[100px] !mb-0"
+          subtitleStyle={{ marginTop: "48px", marginBottom: "0" }}
         />
         <StaggerChildren staggerDelay={0.12}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-fg-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-2 md:mt-4">
             {pillars.map((pillar, index) => (
               <div key={index} className="bg-fg-sand rounded-md p-6 md:p-8">
                 <div className="font-cormorant text-3xl md:text-4xl font-semibold text-fg-gold/30 mb-fg-sm">

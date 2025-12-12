@@ -31,14 +31,14 @@ export default function GroundworksMethod() {
           description={`Our method is designed to move people from "I don't know where to start" to "I understand how to build and present a serious business."`}
           align="center"
           maxWidth="lg"
-          subtitleClassName="mt-fg-md"
-          subtitleStyle={{ marginTop: "40px" }}
+          subtitleClassName="md:!mt-[70px] lg:!mt-[70px]"
+          subtitleStyle={{ marginTop: "48px" }}
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center mt-fg-md">
           {/* Methods Grid - Left on desktop, first on mobile */}
           <div className="order-1 lg:order-1">
             <StaggerChildren staggerDelay={0.12}>
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-2 md:gap-4">
                 {methods.map((method, index) => (
                   <div key={index} className="bg-white rounded-md p-6 md:p-8">
                     <div className="font-cormorant text-3xl md:text-4xl font-semibold text-fg-gold/30 mb-fg-sm">

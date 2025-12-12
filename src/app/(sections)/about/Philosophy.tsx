@@ -21,6 +21,8 @@ export default function Philosophy() {
           title="Foundations before scale."
           align="center"
           maxWidth="lg"
+          titleClassName="md:!mt-[70px] lg:!mt-[70px]"
+          titleStyle={{ marginTop: "48px" }}
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-fg-md">
           {/* Image - Left on desktop, first on mobile */}

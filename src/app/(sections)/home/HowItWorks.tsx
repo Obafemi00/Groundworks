@@ -33,7 +33,7 @@ export default function HowItWorks() {
           subtitle="How it works"
           align="center"
           maxWidth="lg"
-          subtitleClassName="md:!mt-[50px] lg:!mt-[50px]"
+          subtitleClassName="md:!mt-[70px] lg:!mt-[70px]"
           subtitleStyle={{ marginTop: "48px" }}
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mt-fg-md">

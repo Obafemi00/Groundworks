@@ -1,5 +1,5 @@
 import PageHero from "@/app/(components)/PageHero";
-import ProgrammeList from "@/app/(sections)/programmes/ProgrammeList";
+import ProgrammesContent from "@/components/programmes/ProgrammesContent";
 import { generatePageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -17,15 +17,14 @@ export const dynamic = "force-static";
 export default function ProgrammesPage() {
   return (
     <div className="pt-20">
-      <PageHero 
-        title="Programmes designed for first-time founders." 
+      <PageHero
+        title="Programmes designed for first-time founders."
         subtitle="Three stages. One goal: helping you operate as a serious founder, from the very beginning."
         withImage={true}
         imageSrc="/images/founder-groundworks/programmes/programmes-01.jpg"
         imageAlt="Founders participating in a structured workshop session"
       />
-      <ProgrammeList />
+      <ProgrammesContent />
     </div>
   );
 }
-
