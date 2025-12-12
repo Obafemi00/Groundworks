@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/logo/Founder Groundworks Transparent White.png",
-    shortcut: "/logo/Founder Groundworks Transparent White.png",
-    apple: "/logo/Founder Groundworks Transparent White.png",
+    icon: "/logo/Founder Groundworks Logo_BlueBG.png",
+    shortcut: "/logo/Founder Groundworks Logo_BlueBG.png",
+    apple: "/logo/Founder Groundworks Logo_BlueBG.png",
   },
   manifest: "/site.webmanifest",
 };

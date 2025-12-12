@@ -90,10 +90,14 @@ export default function ProgrammeCompareTable() {
                 </p>
               </div>
               {row.values.map((value, colIndex) => (
-                <div key={colIndex} className="pt-0 md:pt-0">
-                  <p className="font-inter text-base leading-relaxed text-[#0E1F36]">
+                <div key={colIndex} className="pt-0 md:pt-0 relative">
+                  <p className="font-inter text-base leading-relaxed text-[#0E1F36] pr-12 md:pr-0">
                     {value}
                   </p>
+                  {/* Programme number - mobile only */}
+                  <span className="absolute right-0 top-0 font-cormorant text-2xl md:hidden text-[#C4A463]/20 font-semibold">
+                    {programmeData[colIndex].number}
+                  </span>
                 </div>
               ))}
             </div>

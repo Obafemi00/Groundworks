@@ -47,15 +47,6 @@ export default function ProgrammesContent() {
       {view === "journey" && (
         <section className="py-16 md:py-20 lg:py-32 bg-white">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-            {/* Timeline - Mobile */}
-            <div className="lg:hidden mb-12">
-              <ProgrammeTimeline
-                activeIndex={activeProgrammeIndex}
-                onProgrammeSelect={setActiveProgrammeIndex}
-                isMobile={true}
-              />
-            </div>
-
             <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16">
               {/* Timeline - Desktop */}
               <div className="hidden lg:block">

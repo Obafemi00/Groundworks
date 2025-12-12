@@ -101,9 +101,9 @@ export default function ProgrammeCard({
                       {programme.format.items.map((item, idx) => (
                         <li
                           key={idx}
-                          className="font-inter text-base leading-relaxed text-[#0E1F36] flex items-start gap-2"
+                          className="font-inter text-base leading-relaxed text-[#0E1F36] flex items-center gap-2"
                         >
-                          <span className="text-[#C4A463] mt-1.5">•</span>
+                          <span className="text-[#C4A463] flex-shrink-0">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -121,9 +121,9 @@ export default function ProgrammeCard({
                       {programme.whatYoullCover.map((item, idx) => (
                         <li
                           key={idx}
-                          className="font-inter text-base leading-relaxed text-[#0E1F36] flex items-start gap-2"
+                          className="font-inter text-base leading-relaxed text-[#0E1F36] flex items-center gap-2"
                         >
-                          <span className="text-[#C4A463] mt-1.5">•</span>
+                          <span className="text-[#C4A463] flex-shrink-0">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
