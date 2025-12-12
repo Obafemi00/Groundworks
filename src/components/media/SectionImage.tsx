@@ -24,6 +24,9 @@ export default function SectionImage({
   height = 1000,
   priority = false
 }: SectionImageProps) {
+  // Check if className contains a height constraint
+  const hasHeightConstraint = /h-\[|h-\d+|h-auto/.test(className);
+  
   return (
     <div className={cn(
       !noMargin && "my-8 md:my-12 lg:my-16" // Responsive top and bottom margins
@@ -40,7 +43,10 @@ export default function SectionImage({
               alt={alt}
               width={width}
               height={height}
-              className="object-cover w-full h-full"
+              className={cn(
+                "w-full",
+                hasHeightConstraint ? "object-cover h-full" : "h-auto"
+              )}
               priority={priority}
               loading={priority ? undefined : "lazy"}
             />

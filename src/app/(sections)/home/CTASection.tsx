@@ -8,7 +8,7 @@ import StaggerChildren from "@/components/animations/StaggerChildren";
 
 export default function CTASection() {
   return (
-    <Section background="navy">
+    <Section background="navy" padding="xl" className="mb-0">
       <Container>
         <div className="text-center max-w-3xl mx-auto">
           <HeadingBlock

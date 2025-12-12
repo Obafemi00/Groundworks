@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { supabaseServer } from "@/lib/supabaseServer";
 
+// Force dynamic rendering for form submissions
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   try {
     const data = await req.json();
@@ -51,11 +54,13 @@ export async function POST(req: Request) {
       .select();
 
     if (error) {
-      console.error("Supabase error:", error);
-      console.error("Error code:", error.code);
-      console.error("Error details:", JSON.stringify(error, null, 2));
-      console.error("Attempted data:", JSON.stringify(submissionData, null, 2));
-      console.error("Supabase URL:", process.env.NEXT_PUBLIC_SUPABASE_URL ? "Set" : "Missing");
+      if (process.env.NODE_ENV === "development") {
+        console.error("Supabase error:", error);
+        console.error("Error code:", error.code);
+        console.error("Error details:", JSON.stringify(error, null, 2));
+        console.error("Attempted data:", JSON.stringify(submissionData, null, 2));
+        console.error("Supabase URL:", process.env.NEXT_PUBLIC_SUPABASE_URL ? "Set" : "Missing");
+      }
       
       // Provide helpful error message based on error type
       let errorMessage = "Could not save your submission.";
@@ -88,7 +93,9 @@ export async function POST(req: Request) {
       { status: 200 }
     );
   } catch (err) {
-    console.error("API error:", err);
+    if (process.env.NODE_ENV === "development") {
+      console.error("API error:", err);
+    }
     const errorMessage = err instanceof Error ? err.message : "Something went wrong.";
     return NextResponse.json(
       { 

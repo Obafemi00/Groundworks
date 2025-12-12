@@ -110,6 +110,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preload critical fonts */}
+        <link
+          rel="preload"
+          href="/fonts/cormorant-garamond.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/inter-variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* Preload hero image */}
+        <link
+          rel="preload"
+          href="/images/founder-groundworks/hero/hero-01.jpg"
+          as="image"
+        />
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

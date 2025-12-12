@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +31,7 @@ export default function Section({
   };
 
   return (
-    <section className={cn(bgClasses[background], paddingClasses[padding], className)}>
+    <section className={cn(bgClasses[background], paddingClasses[padding], "mb-fg-xl", className)}>
       {children}
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect, useState, memo } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 import FadeUp from "@/components/animations/FadeUp";
 
@@ -20,14 +20,14 @@ type TimelineProps = {
 type TimelineItemComponentProps = {
   item: TimelineItem;
   index: number;
-  scrollProgress: any;
+  scrollProgress: MotionValue<number>;
   totalItems: number;
   markerRef?: (node: HTMLDivElement | null) => void;
   isFirst?: boolean;
   isLast?: boolean;
 };
 
-function TimelineItemComponent({ item, index, scrollProgress, totalItems, markerRef, isFirst, isLast }: TimelineItemComponentProps) {
+const TimelineItemComponent = memo(function TimelineItemComponent({ item, index, scrollProgress, totalItems, markerRef, isFirst, isLast }: TimelineItemComponentProps) {
   // Calculate when this item becomes active (based on scroll position)
   const itemStart = index / totalItems;
   const itemEnd = (index + 1) / totalItems;
@@ -86,7 +86,7 @@ function TimelineItemComponent({ item, index, scrollProgress, totalItems, marker
       </div>
     </FadeUp>
   );
-}
+});
 
 export default function Timeline({ items, className, variant = "default" }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null);

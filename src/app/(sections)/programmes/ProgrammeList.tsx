@@ -15,7 +15,7 @@ export default function ProgrammeList() {
       <Section>
         <Container>
           <div className="max-w-4xl mx-auto mb-fg-lg">
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+            <p className="font-inter text-base md:text-[18px] leading-relaxed" style={{ color: "#0E1F36" }}>
               Founder Groundworks is built around a simple path. You start with foundations, develop through practice, and finish with a clear understanding of where you stand as a founder, and what comes next.
             </p>
           </div>
@@ -35,7 +35,7 @@ export default function ProgrammeList() {
           </div>
         </Container>
       </Section>
-      <Section background="navy">
+      <Section>
         <Container>
           <div className="text-center max-w-3xl mx-auto">
             <HeadingBlock
@@ -44,8 +44,7 @@ export default function ProgrammeList() {
               align="center"
               maxWidth="md"
               level={2}
-              textColor="text-white"
-              descriptionColor="text-fg-sand"
+              descriptionColor=""
             />
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-fg-md">
               <Button variant="primary" size="lg" href="/contact">

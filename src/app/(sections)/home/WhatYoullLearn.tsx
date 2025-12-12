@@ -16,13 +16,15 @@ export default function WhatYoullLearn() {
   ];
 
   return (
-    <Section background="white">
+    <Section background="white" padding="xl">
       <Container>
         <HeadingBlock
           title="By the end, you will:"
           subtitle="Outcomes"
           align="center"
           maxWidth="lg"
+          subtitleClassName="md:!mt-[50px] lg:!mt-[50px]"
+          subtitleStyle={{ marginTop: "48px" }}
         />
         <StaggerChildren staggerDelay={0.1}>
           <div className="mt-fg-md">

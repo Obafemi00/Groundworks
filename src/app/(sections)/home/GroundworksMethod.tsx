@@ -23,7 +23,7 @@ export default function GroundworksMethod() {
   ];
 
   return (
-    <Section background="sand">
+    <Section background="sand" padding="xl" className="pt-fg-xxl">
       <Container>
         <HeadingBlock
           title="From unclear ideas to disciplined founder."
@@ -31,30 +31,39 @@ export default function GroundworksMethod() {
           description={`Our method is designed to move people from "I don't know where to start" to "I understand how to build and present a serious business."`}
           align="center"
           maxWidth="lg"
+          subtitleClassName="mt-fg-md"
+          subtitleStyle={{ marginTop: "40px" }}
         />
-        <StaggerChildren staggerDelay={0.12}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-fg-md">
-            {methods.map((method, index) => (
-              <div key={index} className="bg-white rounded-md p-6 md:p-8">
-                <div className="font-cormorant text-3xl md:text-4xl font-semibold text-fg-gold/30 mb-fg-sm">
-                  {index + 1}
-                </div>
-                <h3 className="font-cormorant text-2xl font-semibold text-fg-navy mb-fg-sm">
-                  {method.title}
-                </h3>
-                <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
-                  {method.description}
-                </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center mt-fg-md">
+          {/* Methods Grid - Left on desktop, first on mobile */}
+          <div className="order-1 lg:order-1">
+            <StaggerChildren staggerDelay={0.12}>
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4">
+                {methods.map((method, index) => (
+                  <div key={index} className="bg-white rounded-md p-6 md:p-8">
+                    <div className="font-cormorant text-3xl md:text-4xl font-semibold text-fg-gold/30 mb-fg-sm">
+                      {index + 1}
+                    </div>
+                    <h3 className="font-cormorant text-2xl font-semibold text-fg-navy mb-fg-sm">
+                      {method.title}
+                    </h3>
+                    <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+                      {method.description}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </StaggerChildren>
           </div>
-        </StaggerChildren>
-        <div className="mt-fg-lg">
-          <SectionImage
-            src="/images/founder-groundworks/programmes/programmes-01.jpg"
-            alt="Founders applying the Groundworks Method through structured training and practical frameworks"
-            className="h-64 md:h-96 lg:h-[400px]"
-          />
+          {/* Image - Right on desktop, second on mobile */}
+          <div className="order-2 lg:order-2">
+            <SectionImage
+              src="/images/founder-groundworks/programmes/programmes-01.jpg"
+              alt="Founders applying the Groundworks Method through structured training and practical frameworks"
+              className="h-64 md:h-96 lg:h-[500px] w-full"
+              noMargin={true}
+            />
+          </div>
         </div>
       </Container>
     </Section>

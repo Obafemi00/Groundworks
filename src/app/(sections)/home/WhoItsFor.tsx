@@ -15,43 +15,51 @@ export default function WhoItsFor() {
   ];
 
   return (
-    <Section>
+    <Section padding="xl">
       <Container>
         <HeadingBlock
           title='Not "serial founders." First-time founders.'
           subtitle="Who we serve"
           align="center"
           maxWidth="lg"
+          subtitleClassName="mt-[10px] md:!mt-0"
         />
-        <StaggerChildren staggerDelay={0.12}>
-          <div className="mt-fg-md space-y-fg-xs">
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
-              Founder Groundworks is built for people at the very beginning of the journey, often with no previous startup experience at all.
-            </p>
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
-              Our participants include:
-            </p>
-            <div className="space-y-4">
-              {participants.map((participant, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <span className="text-fg-gold flex-shrink-0 font-inter text-lg leading-[1.6]">➤</span>
-                  <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed flex-1">
-                    {participant}
-                  </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-fg-md">
+          {/* Text - Left on desktop, first on mobile */}
+          <div className="order-1 lg:order-1">
+            <StaggerChildren staggerDelay={0.12}>
+              <div className="space-y-fg-xs">
+                <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
+                  Founder Groundworks is built for people at the very beginning of the journey, often with no previous startup experience at all.
+                </p>
+                <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
+                  Our participants include:
+                </p>
+                <div className="space-y-4">
+                  {participants.map((participant, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <span className="text-fg-gold flex-shrink-0 font-inter text-lg leading-[1.6]">➤</span>
+                      <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed flex-1">
+                        {participant}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed mt-fg-sm font-semibold">
-              If you are serious about becoming a founder – not just &quot;starting a side project&quot; – this is where you begin.
-            </p>
+                <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed mt-fg-sm font-semibold">
+                  If you are serious about becoming a founder – not just &quot;starting a side project&quot; – this is where you begin.
+                </p>
+              </div>
+            </StaggerChildren>
           </div>
-        </StaggerChildren>
-        <div className="mt-fg-lg">
-          <SectionImage
-            src="/images/founder-groundworks/about/about-01.jpg"
-            alt="First-time founders from diverse backgrounds learning together"
-            className="h-64 md:h-96 lg:h-[400px]"
-          />
+          {/* Image - Right on desktop, second on mobile */}
+          <div className="order-2 lg:order-2">
+            <SectionImage
+              src="/images/founder-groundworks/about/about-01.jpg"
+              alt="First-time founders from diverse backgrounds learning together"
+              className="h-64 md:h-96 lg:h-[500px] w-full"
+              noMargin={true}
+            />
+          </div>
         </div>
       </Container>
     </Section>

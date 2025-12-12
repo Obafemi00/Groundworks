@@ -15,6 +15,10 @@ type HeadingBlockProps = {
   animate?: boolean;
   textColor?: string;
   descriptionColor?: string;
+  subtitleClassName?: string;
+  subtitleStyle?: React.CSSProperties;
+  titleClassName?: string;
+  titleStyle?: React.CSSProperties;
 };
 
 const maxWidthClasses = {
@@ -46,6 +50,10 @@ export default function HeadingBlock({
   animate = true,
   textColor,
   descriptionColor = "text-fg-grey",
+  subtitleClassName,
+  subtitleStyle,
+  titleClassName,
+  titleStyle,
 }: HeadingBlockProps) {
   const HeadingTag = `h${level}` as React.ElementType;
 
@@ -56,20 +64,30 @@ export default function HeadingBlock({
       className
     )}>
       {subtitle && (
-        <p className="font-inter text-sm md:text-base uppercase tracking-wider text-fg-gold mb-fg-sm">
+        <p 
+          className={cn("font-inter text-sm md:text-base uppercase tracking-wider text-fg-gold mb-fg-sm", subtitleClassName)}
+          style={subtitleStyle}
+        >
           {subtitle}
         </p>
       )}
       {title && (
-        <HeadingTag className={cn(
-          getHeadingClasses(level, textColor),
-          align === "center" && "text-center"
-        )}>
+        <HeadingTag 
+          className={cn(
+            getHeadingClasses(level, textColor),
+            align === "center" && "text-center",
+            titleClassName
+          )}
+          style={titleStyle || (!textColor ? { color: "#0E1F36" } : {})}
+        >
           {title}
         </HeadingTag>
       )}
       {description && (
-        <div className={cn("mt-fg-md font-inter text-base md:text-[18px] leading-relaxed", descriptionColor)}>
+        <div 
+          className={cn("mt-fg-md font-inter text-base md:text-[18px] leading-relaxed", descriptionColor === "" ? "" : descriptionColor)}
+          style={descriptionColor === "" ? { color: "#0E1F36" } : undefined}
+        >
           {typeof description === "string" ? <p>{description}</p> : description}
         </div>
       )}

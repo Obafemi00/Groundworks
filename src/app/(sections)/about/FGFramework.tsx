@@ -4,7 +4,6 @@ import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import HeadingBlock from "@/components/typography/HeadingBlock";
 import StaggerChildren from "@/components/animations/StaggerChildren";
-import SectionImage from "@/components/media/SectionImage";
 
 export default function FGFramework() {
   const pillars = [
@@ -23,39 +22,31 @@ export default function FGFramework() {
   ];
 
   return (
-    <Section background="navy">
+    <Section className="mb-[40px] md:mb-[45px] lg:!mb-[50px]">
       <Container>
         <HeadingBlock
           title="From raw potential to structured founder."
           subtitle="The Founder Groundworks Framework"
           align="center"
           maxWidth="lg"
-          textColor="text-white"
         />
         <StaggerChildren staggerDelay={0.12}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-fg-md">
             {pillars.map((pillar, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-md p-6 md:p-8">
+              <div key={index} className="bg-fg-sand rounded-md p-6 md:p-8">
                 <div className="font-cormorant text-3xl md:text-4xl font-semibold text-fg-gold/30 mb-fg-sm">
                   {index + 1}
                 </div>
-                <h3 className="font-cormorant text-2xl font-semibold text-white mb-fg-sm">
+                <h3 className="font-cormorant text-2xl font-semibold mb-fg-sm" style={{ color: "#0E1F36" }}>
                   {pillar.title}
                 </h3>
-                <p className="font-inter text-base md:text-[18px] text-fg-sand leading-relaxed">
+                <p className="font-inter text-base md:text-[18px] leading-relaxed" style={{ color: "#0E1F36" }}>
                   {pillar.description}
                 </p>
               </div>
             ))}
           </div>
         </StaggerChildren>
-        <div className="mt-fg-lg">
-          <SectionImage
-            src="/images/founder-groundworks/programmes/programmes-02.jpg"
-            alt="The Founder Groundworks framework in practice"
-            className="h-64 md:h-96 lg:h-[400px]"
-          />
-        </div>
       </Container>
     </Section>
   );

@@ -15,42 +15,49 @@ export default function Philosophy() {
   ];
 
   return (
-    <Section>
+    <Section className="mb-[40px] md:mb-[45px] lg:!mb-[50px]">
       <Container>
         <HeadingBlock
           title="Foundations before scale."
           align="center"
           maxWidth="lg"
         />
-        <StaggerChildren staggerDelay={0.12}>
-          <div className="mt-fg-md space-y-fg-xs">
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
-              We believe that the most important stage of a founder's journey is the beginning. The way you think, speak and operate in the early days shapes everything that follows.
-            </p>
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
-              Our approach is simple:
-            </p>
-            <div className="space-y-4">
-              {principles.map((principle, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <span className="text-fg-gold flex-shrink-0 font-inter text-lg leading-[1.6]">➤</span>
-                  <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed flex-1">
-                    {principle}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed mt-fg-sm font-semibold">
-              We are not a "motivation engine". We are a formation institute.
-            </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-fg-md">
+          {/* Image - Left on desktop, first on mobile */}
+          <div className="order-1 lg:order-1">
+            <SectionImage
+              src="/images/founder-groundworks/misc/misc-01.jpg"
+              alt="Founders building foundations through structured learning"
+              className="h-64 md:h-96 lg:h-[500px]"
+              noMargin={true}
+            />
           </div>
-        </StaggerChildren>
-        <div className="mt-fg-lg">
-          <SectionImage
-            src="/images/founder-groundworks/misc/misc-01.jpg"
-            alt="Founders building foundations through structured learning"
-            className="h-64 md:h-96 lg:h-[400px]"
-          />
+          {/* Text - Right on desktop, second on mobile */}
+          <div className="order-2 lg:order-2">
+            <StaggerChildren staggerDelay={0.12}>
+              <div className="space-y-fg-xs">
+                <p className="font-inter text-base md:text-[18px] leading-relaxed" style={{ color: "#0E1F36" }}>
+                  We believe that the most important stage of a founder's journey is the beginning. The way you think, speak and operate in the early days shapes everything that follows.
+                </p>
+                <p className="font-inter text-base md:text-[18px] leading-relaxed font-semibold" style={{ color: "#0E1F36" }}>
+                  Our approach is simple:
+                </p>
+                <div className="space-y-4">
+                  {principles.map((principle, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <span className="text-fg-gold flex-shrink-0 font-inter text-lg leading-[1.6]">➤</span>
+                      <p className="font-inter text-base md:text-[18px] leading-relaxed flex-1" style={{ color: "#0E1F36" }}>
+                        {principle}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <p className="font-inter text-base md:text-[18px] leading-relaxed mt-fg-sm font-semibold" style={{ color: "#0E1F36" }}>
+                  We are not a "motivation engine". We are a formation institute.
+                </p>
+              </div>
+            </StaggerChildren>
+          </div>
         </div>
       </Container>
     </Section>

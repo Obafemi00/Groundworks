@@ -55,7 +55,9 @@ export default function ContactForm() {
         const errorMsg = result.message || "Something went wrong. Please try again.";
         setSubmitError(errorMsg);
         setIsSubmitting(false);
-        console.error("Form submission error:", result);
+        if (process.env.NODE_ENV === "development") {
+          console.error("Form submission error:", result);
+        }
         return;
       }
 
@@ -64,7 +66,9 @@ export default function ContactForm() {
       setIsSubmitting(false);
       setFormData({ name: "", email: "", location: "", description: "", interest: "", message: "" });
     } catch (error) {
-      console.error(error);
+      if (process.env.NODE_ENV === "development") {
+        console.error(error);
+      }
       setSubmitError("Network error. Try again.");
       setIsSubmitting(false);
     }

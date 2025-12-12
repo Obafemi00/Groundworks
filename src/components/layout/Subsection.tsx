@@ -43,7 +43,7 @@ export default function Subsection({
           </p>
         )}
         {title && (
-          <h3 className="font-cormorant text-2xl md:text-3xl font-semibold text-fg-navy mb-fg-md">
+          <h3 className="font-cormorant text-2xl md:text-3xl font-semibold mb-fg-md" style={{ color: "#0E1F36" }}>
             {title}
           </h3>
         )}

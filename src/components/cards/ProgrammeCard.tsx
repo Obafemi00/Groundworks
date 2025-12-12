@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Programme } from "@/data/programmes";
 import Button from "@/components/buttons/Button";
 import { cn } from "@/lib/utils";
@@ -10,7 +11,7 @@ type ProgrammeCardProps = {
   className?: string;
 };
 
-export default function ProgrammeCard({ programme, className }: ProgrammeCardProps) {
+const ProgrammeCard = memo(function ProgrammeCard({ programme, className }: ProgrammeCardProps) {
   return (
     <FadeUp delay={0.1} duration={0.6}>
       <div className={cn(
@@ -32,12 +33,12 @@ export default function ProgrammeCard({ programme, className }: ProgrammeCardPro
         </div>
 
         {/* Title */}
-        <h3 className="font-cormorant text-3xl md:text-4xl font-semibold text-fg-navy mb-5 leading-tight">
+        <h3 className="font-cormorant text-3xl md:text-4xl font-semibold mb-5 leading-tight" style={{ color: "#0E1F36" }}>
           {programme.title}
         </h3>
 
         {/* Summary */}
-        <p className="font-inter text-fg-grey mb-8 text-base md:text-[17px] leading-relaxed">
+        <p className="font-inter mb-8 text-base md:text-[17px] leading-relaxed" style={{ color: "#0E1F36" }}>
           {programme.summary}
         </p>
 
@@ -48,24 +49,24 @@ export default function ProgrammeCard({ programme, className }: ProgrammeCardPro
         <div className="mb-8 space-y-8">
           {/* Who it's for */}
           <div>
-            <h4 className="font-inter text-xs uppercase tracking-wider text-fg-grey mb-3 font-semibold">
+            <h4 className="font-inter text-xs uppercase tracking-wider mb-3 font-semibold" style={{ color: "#0E1F36" }}>
               Who it's for
             </h4>
-            <p className="font-inter text-fg-grey text-[15px] md:text-base leading-relaxed">
+            <p className="font-inter text-[15px] md:text-base leading-relaxed" style={{ color: "#0E1F36" }}>
               {programme.whoItsFor}
             </p>
           </div>
 
           {/* Format */}
           <div>
-            <h4 className="font-inter text-xs uppercase tracking-wider text-fg-grey mb-4 font-semibold">
+            <h4 className="font-inter text-xs uppercase tracking-wider mb-4 font-semibold" style={{ color: "#0E1F36" }}>
               Format
             </h4>
             <div className="space-y-3">
               {programme.format.map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className="mt-1.5 w-1 h-1 rounded-full bg-fg-gold flex-shrink-0"></div>
-                  <p className="font-inter text-fg-grey text-[15px] md:text-base leading-relaxed flex-1">
+                  <p className="font-inter text-[15px] md:text-base leading-relaxed flex-1" style={{ color: "#0E1F36" }}>
                     {item}
                   </p>
                 </div>
@@ -75,14 +76,14 @@ export default function ProgrammeCard({ programme, className }: ProgrammeCardPro
 
           {/* What you'll cover */}
           <div>
-            <h4 className="font-inter text-xs uppercase tracking-wider text-fg-grey mb-4 font-semibold">
+            <h4 className="font-inter text-xs uppercase tracking-wider mb-4 font-semibold" style={{ color: "#0E1F36" }}>
               What you'll cover
             </h4>
             <div className="space-y-3">
               {programme.whatYoullCover.map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className="mt-1.5 w-1 h-1 rounded-full bg-fg-gold flex-shrink-0"></div>
-                  <p className="font-inter text-fg-grey text-[15px] md:text-base leading-relaxed flex-1">
+                  <p className="font-inter text-[15px] md:text-base leading-relaxed flex-1" style={{ color: "#0E1F36" }}>
                     {item}
                   </p>
                 </div>
@@ -92,10 +93,10 @@ export default function ProgrammeCard({ programme, className }: ProgrammeCardPro
 
           {/* Outcome */}
           <div>
-            <h4 className="font-inter text-xs uppercase tracking-wider text-fg-grey mb-3 font-semibold">
+            <h4 className="font-inter text-xs uppercase tracking-wider mb-3 font-semibold" style={{ color: "#0E1F36" }}>
               Outcome
             </h4>
-            <p className="font-inter text-fg-grey text-[15px] md:text-base leading-relaxed">
+            <p className="font-inter text-[15px] md:text-base leading-relaxed" style={{ color: "#0E1F36" }}>
               {programme.outcome}
             </p>
           </div>
@@ -114,5 +115,7 @@ export default function ProgrammeCard({ programme, className }: ProgrammeCardPro
       </div>
     </FadeUp>
   );
-}
+});
+
+export default ProgrammeCard;
 

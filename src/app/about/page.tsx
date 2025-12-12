@@ -15,6 +15,9 @@ export const metadata: Metadata = generatePageMetadata({
   imageAlt: "Diverse founders collaborating in a professional setting at Founder Groundworks",
 });
 
+// Enable static generation for better performance
+export const dynamic = "force-static";
+
 export default function AboutPage() {
   return (
     <div className="pt-20">

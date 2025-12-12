@@ -9,11 +9,12 @@ import StaggerChildren from "@/components/animations/StaggerChildren";
 
 export default function Values() {
   return (
-    <Section>
+    <Section className="mb-[40px] md:mb-[45px] lg:!mb-[50px]">
       <Container>
         <HeadingBlock
           title="Our Values"
           description="The core values that define who we are and how we work."
+          descriptionColor=""
         />
         <StaggerChildren staggerDelay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-fg-md">
