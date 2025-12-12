@@ -35,7 +35,7 @@ export default function PageHero({ title, subtitle, background = "navy", withIma
             />
           </div>
           {/* Overlay for text readability */}
-          <div className="absolute inset-0 z-10 bg-fg-navy/50" />
+          <div className="absolute inset-0 z-10 bg-black/60" />
         </>
       )}
       

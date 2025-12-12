@@ -22,7 +22,7 @@ export default function WhoItsFor() {
           subtitle="Who we serve"
           align="center"
           maxWidth="lg"
-          subtitleClassName="mt-[10px] md:!mt-0"
+          subtitleClassName="mt-[50px] md:!mt-0"
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mt-fg-md">
           {/* Text - Left on desktop, first on mobile */}
@@ -32,7 +32,7 @@ export default function WhoItsFor() {
                 <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed">
                   Founder Groundworks is built for people at the very beginning of the journey, often with no previous startup experience at all.
                 </p>
-                <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold">
+                <p className="font-inter text-base md:text-[18px] text-fg-grey leading-relaxed font-semibold" style={{ marginTop: "10px" }}>
                   Our participants include:
                 </p>
                 <div className="space-y-4">

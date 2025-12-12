@@ -48,10 +48,9 @@ export async function POST(req: Request) {
     const supabase = supabaseServer();
 
     // Insert into Form_submissions table (case-sensitive, quoted name)
-    const { data: insertedData, error } = await supabase
+    const { error } = await supabase
       .from("Form_submissions")
-      .insert(submissionData)
-      .select();
+      .insert(submissionData);
 
     if (error) {
       if (process.env.NODE_ENV === "development") {

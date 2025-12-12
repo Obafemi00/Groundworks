@@ -3,7 +3,6 @@ import Section from "@/components/layout/Section";
 import Container from "@/components/layout/Container";
 import ContactForm from "@/components/forms/ContactForm";
 import { generatePageMetadata } from "@/lib/seo";
-import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generatePageMetadata({

@@ -45,7 +45,7 @@ export default function Header() {
 
             {/* Center: Navigation Links */}
             <nav className="hidden lg:flex items-center flex-1 justify-center gap-8 xl:gap-12" aria-label="Main navigation">
-              {navigationLinks.filter(link => link.href !== '/contact').map((link, index) => (
+              {navigationLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: -10 }}
@@ -88,7 +88,7 @@ export default function Header() {
                       color: '#FFFFFF',
                     }}
                   >
-                    <span className="relative z-10" style={{ color: '#FFFFFF' }}>Contact Us</span>
+                    <span className="relative z-10" style={{ color: '#FFFFFF' }}>Apply to the Foundations Programme</span>
                     <motion.span
                       className="relative z-10 ml-2"
                       style={{ color: '#FFFFFF' }}
@@ -159,6 +159,26 @@ export default function Header() {
               className="fixed top-0 left-0 right-0 bg-white z-50 shadow-lg lg:hidden"
             >
               <div className="max-w-[1400px] mx-auto px-6 py-8">
+                {/* Close Button */}
+                <div className="flex justify-end mb-4">
+                  <button
+                    onClick={close}
+                    className="p-2 text-fg-navy hover:text-fg-gold transition-colors duration-200"
+                    aria-label="Close menu"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
                 <nav className="flex flex-col gap-4 mb-6" aria-label="Mobile navigation">
                   {navigationLinks.map((link, index) => (
                     <motion.div
@@ -188,12 +208,17 @@ export default function Header() {
                   >
                     <Link
                       href="/contact"
-                      className="group inline-flex items-center justify-center w-full font-inter font-semibold text-sm uppercase tracking-wide text-white bg-fg-navy px-7 py-3.5 rounded-[4px] transition-all duration-300 hover:bg-[#0b182b] hover:shadow-lg relative overflow-hidden"
+                      className="group inline-flex items-center justify-center w-full font-inter font-semibold text-sm uppercase tracking-wide px-7 py-3.5 rounded-[4px] transition-all duration-300 hover:shadow-lg relative overflow-hidden"
+                      style={{
+                        backgroundColor: '#0E1F36',
+                        color: '#FFFFFF',
+                      }}
                       onClick={close}
                     >
-                      <span className="relative z-10">Contact Us</span>
+                      <span className="relative z-10" style={{ color: '#FFFFFF' }}>Apply to the Foundations Programme</span>
                       <motion.span
                         className="relative z-10 ml-2"
+                        style={{ color: '#FFFFFF' }}
                         initial={{ x: 0 }}
                         whileHover={{ x: 4 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -201,7 +226,8 @@ export default function Header() {
                         →
                       </motion.span>
                       <motion.div
-                        className="absolute inset-0 bg-fg-gold"
+                        className="absolute inset-0"
+                        style={{ backgroundColor: '#C4A463' }}
                         initial={{ x: "-100%" }}
                         whileHover={{ x: 0 }}
                         transition={{ duration: 0.3 }}

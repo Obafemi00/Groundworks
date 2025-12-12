@@ -27,7 +27,7 @@ type TimelineItemComponentProps = {
   isLast?: boolean;
 };
 
-const TimelineItemComponent = memo(function TimelineItemComponent({ item, index, scrollProgress, totalItems, markerRef, isFirst, isLast }: TimelineItemComponentProps) {
+const TimelineItemComponent = memo(function TimelineItemComponent({ item, index, scrollProgress, totalItems, markerRef, isFirst: _isFirst, isLast: _isLast }: TimelineItemComponentProps) {
   // Calculate when this item becomes active (based on scroll position)
   const itemStart = index / totalItems;
   const itemEnd = (index + 1) / totalItems;
@@ -88,12 +88,12 @@ const TimelineItemComponent = memo(function TimelineItemComponent({ item, index,
   );
 });
 
-export default function Timeline({ items, className, variant = "default" }: TimelineProps) {
+export default function Timeline({ items, className, variant: _variant = "default" }: TimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const firstMarkerRef = useRef<HTMLDivElement>(null);
   const lastMarkerRef = useRef<HTMLDivElement>(null);
   const [lineStart, setLineStart] = useState(0);
-  const [lineEnd, setLineEnd] = useState(0);
+  const [_lineEnd, setLineEnd] = useState(0);
   const [lineHeight, setLineHeight] = useState(0);
 
   const { scrollYProgress } = useScroll({

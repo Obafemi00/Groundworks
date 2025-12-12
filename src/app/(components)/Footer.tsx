@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
-import { navigationLinks } from "@/data/navigation";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Footer() {
@@ -31,13 +30,6 @@ export default function Footer() {
         { href: "/about", label: "Our Philosophy" },
         { href: "/about", label: "The FG Framework" },
         { href: "/about", label: "Our Values" },
-      ],
-    },
-    {
-      title: "LEGAL",
-      links: [
-        { href: "/privacy", label: "Privacy Policy" },
-        { href: "/terms", label: "Terms of Use" },
       ],
     },
   ];
