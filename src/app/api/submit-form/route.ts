@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
 
-    const { first_name, last_name, full_name, email, location, profile_type, interest, details, email_consent, terms_consent } = data;
+    const { first_name, last_name, email, location, profile_type, interest, details, email_consent, terms_consent } = data;
 
     // Validate required fields
     if (!first_name || !last_name || !email) {
@@ -28,11 +28,10 @@ export async function POST(req: Request) {
 
     // Prepare submission data
     // Required fields: first_name, last_name, email, email_consent, terms_consent
-    // Optional fields (can be null): full_name (for backward compatibility), location, profile_type, interest, details
+    // Optional fields (can be null): location, profile_type, interest, details
     const submissionData: {
       first_name: string;
       last_name: string;
-      full_name?: string;
       email: string;
       location: string | null;
       profile_type: string | null;
@@ -43,7 +42,6 @@ export async function POST(req: Request) {
     } = {
       first_name: String(first_name).trim(),
       last_name: String(last_name).trim(),
-      full_name: full_name ? String(full_name).trim() : `${String(first_name).trim()} ${String(last_name).trim()}`.trim(),
       email: String(email).trim(),
       location: location && location.trim() ? location.trim() : null,
       profile_type: profile_type && profile_type.trim() ? profile_type.trim() : null,

@@ -38,7 +38,6 @@ export default function ContactForm() {
     const apiData = {
       first_name: formData.firstName.trim(),
       last_name: formData.lastName.trim(),
-      full_name: `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim(), // Keep for backward compatibility
       email: formData.email,
       location: formData.location || null,
       profile_type: formData.description || null,
