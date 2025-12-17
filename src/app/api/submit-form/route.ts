@@ -8,39 +8,55 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
 
-    const { full_name, email, location, profile_type, interest, details } = data;
+    const { first_name, last_name, full_name, email, location, profile_type, interest, details, email_consent, terms_consent } = data;
 
-    // Validate required fields (only full_name and email are NOT NULL in the schema)
-    if (!full_name || !email) {
+    // Validate required fields
+    if (!first_name || !last_name || !email) {
       return NextResponse.json(
-        { success: false, message: "Full name and email are required." },
+        { success: false, message: "First name, last name, and email are required." },
+        { status: 400 }
+      );
+    }
+
+    // Validate consent checkboxes
+    if (!email_consent || !terms_consent) {
+      return NextResponse.json(
+        { success: false, message: "You must consent to receiving emails and accept the terms and policies." },
         { status: 400 }
       );
     }
 
     // Prepare submission data
-    // Required fields: full_name, email
-    // Optional fields (can be null): location, profile_type, interest, details
+    // Required fields: first_name, last_name, email, email_consent, terms_consent
+    // Optional fields (can be null): full_name (for backward compatibility), location, profile_type, interest, details
     const submissionData: {
-      full_name: string;
+      first_name: string;
+      last_name: string;
+      full_name?: string;
       email: string;
       location: string | null;
       profile_type: string | null;
       interest: string | null;
       details: string | null;
+      email_consent: boolean;
+      terms_consent: boolean;
     } = {
-      full_name: String(full_name).trim(),
+      first_name: String(first_name).trim(),
+      last_name: String(last_name).trim(),
+      full_name: full_name ? String(full_name).trim() : `${String(first_name).trim()} ${String(last_name).trim()}`.trim(),
       email: String(email).trim(),
       location: location && location.trim() ? location.trim() : null,
       profile_type: profile_type && profile_type.trim() ? profile_type.trim() : null,
       interest: interest && interest.trim() ? interest.trim() : null,
       details: details && details.trim() ? details.trim() : null,
+      email_consent: Boolean(email_consent),
+      terms_consent: Boolean(terms_consent),
     };
 
     // Double-check that required fields are not empty after trimming
-    if (!submissionData.full_name || !submissionData.email) {
+    if (!submissionData.first_name || !submissionData.last_name || !submissionData.email) {
       return NextResponse.json(
-        { success: false, message: "Full name and email are required." },
+        { success: false, message: "First name, last name, and email are required." },
         { status: 400 }
       );
     }

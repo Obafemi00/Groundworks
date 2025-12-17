@@ -6,12 +6,15 @@ import Button from "@/components/buttons/Button";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     location: "",
     description: "",
     interest: "",
     message: "",
+    emailConsent: false,
+    termsConsent: false,
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,12 +36,16 @@ export default function ContactForm() {
 
     // Map form data to Supabase schema
     const apiData = {
-      full_name: formData.name,
+      first_name: formData.firstName.trim(),
+      last_name: formData.lastName.trim(),
+      full_name: `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim(), // Keep for backward compatibility
       email: formData.email,
       location: formData.location || null,
       profile_type: formData.description || null,
       interest: formData.interest || null,
       details: formData.message || null,
+      email_consent: formData.emailConsent,
+      terms_consent: formData.termsConsent,
     };
 
     try {
@@ -64,7 +71,7 @@ export default function ContactForm() {
       // Success
       setIsSubmitted(true);
       setIsSubmitting(false);
-      setFormData({ name: "", email: "", location: "", description: "", interest: "", message: "" });
+      setFormData({ firstName: "", lastName: "", email: "", location: "", description: "", interest: "", message: "", emailConsent: false, termsConsent: false });
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error(error);
@@ -93,22 +100,39 @@ export default function ContactForm() {
         Please complete the form below and we will respond with the most appropriate next step.
       </p>
       <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="name" className="block font-inter font-medium text-fg-navy mb-2">
-          Full name *
-        </label>
-        <input
-          type="text"
-          id="name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full px-4 py-3 border border-fg-grey rounded-md focus:outline-none focus:ring-2 focus:ring-fg-gold focus:border-fg-gold font-inter text-fg-navy"
-          required
-        />
-        <p className="mt-1 text-sm text-fg-grey font-inter">Your legal name.</p>
-        {errors.name && (
-          <p className="mt-1 text-sm text-red-600 font-inter">{errors.name}</p>
-        )}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="firstName" className="block font-inter font-medium text-fg-navy mb-2">
+            First name *
+          </label>
+          <input
+            type="text"
+            id="firstName"
+            value={formData.firstName}
+            onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+            className="w-full px-4 py-3 border border-fg-grey rounded-md focus:outline-none focus:ring-2 focus:ring-fg-gold focus:border-fg-gold font-inter text-fg-navy"
+            required
+          />
+          {errors.firstName && (
+            <p className="mt-1 text-sm text-red-600 font-inter">{errors.firstName}</p>
+          )}
+        </div>
+        <div>
+          <label htmlFor="lastName" className="block font-inter font-medium text-fg-navy mb-2">
+            Last name *
+          </label>
+          <input
+            type="text"
+            id="lastName"
+            value={formData.lastName}
+            onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+            className="w-full px-4 py-3 border border-fg-grey rounded-md focus:outline-none focus:ring-2 focus:ring-fg-gold focus:border-fg-gold font-inter text-fg-navy"
+            required
+          />
+          {errors.lastName && (
+            <p className="mt-1 text-sm text-red-600 font-inter">{errors.lastName}</p>
+          )}
+        </div>
       </div>
 
       <div>
@@ -265,6 +289,50 @@ export default function ContactForm() {
         {errors.message && (
           <p className="mt-1 text-sm text-red-600 font-inter">{errors.message}</p>
         )}
+      </div>
+
+      <div>
+        <div className="space-y-4">
+          <label className="flex items-start gap-3 font-inter text-fg-navy">
+            <input
+              type="checkbox"
+              checked={formData.emailConsent}
+              onChange={(e) => setFormData({ ...formData, emailConsent: e.target.checked })}
+              className="mt-1 w-4 h-4 text-fg-gold border-fg-grey rounded focus:ring-fg-gold focus:ring-2"
+              required
+            />
+            <span className="text-sm md:text-base">
+              I consent to receiving emails from Founder Groundworks, including my score and breakdown. *
+            </span>
+          </label>
+          {errors.emailConsent && (
+            <p className="ml-7 text-sm text-red-600 font-inter">{errors.emailConsent}</p>
+          )}
+          
+          <label className="flex items-start gap-3 font-inter text-fg-navy">
+            <input
+              type="checkbox"
+              checked={formData.termsConsent}
+              onChange={(e) => setFormData({ ...formData, termsConsent: e.target.checked })}
+              className="mt-1 w-4 h-4 text-fg-gold border-fg-grey rounded focus:ring-fg-gold focus:ring-2"
+              required
+            />
+            <span className="text-sm md:text-base">
+              I have read and agree to the{" "}
+              <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-fg-gold hover:underline">
+                Terms of Use
+              </a>
+              {" "}and{" "}
+              <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-fg-gold hover:underline">
+                Privacy Policy
+              </a>
+              . *
+            </span>
+          </label>
+          {errors.termsConsent && (
+            <p className="ml-7 text-sm text-red-600 font-inter">{errors.termsConsent}</p>
+          )}
+        </div>
       </div>
 
       {submitError && (

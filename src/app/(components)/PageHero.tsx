@@ -21,7 +21,7 @@ export default function PageHero({ title, subtitle, background = "navy", withIma
   };
 
   return (
-    <section className={`${!withImage ? bgClasses[background] : ""} relative overflow-hidden ${withImage ? "min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center mb-[60px] md:mb-[70px] lg:mb-[80px]" : "py-section mb-[60px] md:mb-[70px] lg:mb-[80px]"}`}>
+    <section className={`${!withImage ? bgClasses[background] : ""} relative overflow-hidden ${withImage ? "min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center mb-[60px] md:mb-[70px] lg:mb-[80px]" : "pt-4 md:pt-5 lg:pt-6 pb-2 md:pb-3 lg:pb-4 mb-1 md:mb-2 lg:mb-3"}`}>
       {/* Full cover image background */}
       {withImage && imageSrc && (
         <>
@@ -46,6 +46,7 @@ export default function PageHero({ title, subtitle, background = "navy", withIma
             <SplitText
               as="h1"
               className={`font-cormorant text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 tracking-tight ${withImage ? "text-white" : ""}`}
+              style={!withImage && background === "white" ? { color: "#0E1F36" } : undefined}
               staggerDelay={0.06}
             >
               {title}
@@ -53,13 +54,16 @@ export default function PageHero({ title, subtitle, background = "navy", withIma
           </FadeUp>
           {subtitle && (
             <FadeUp delay={0.3} duration={0.7}>
-              <p className={`font-inter text-base md:text-[18px] lg:text-xl leading-relaxed ${
-                withImage 
-                  ? "text-white/90" 
-                  : background === "navy" 
-                    ? "text-fg-sand" 
-                    : "text-fg-grey"
-              }`}>
+              <p 
+                className={`font-inter text-base md:text-[18px] lg:text-xl leading-relaxed ${
+                  withImage 
+                    ? "text-white/90" 
+                    : background === "navy" 
+                      ? "text-fg-sand" 
+                      : ""
+                }`}
+                style={!withImage && background === "white" ? { color: "#0E1F36" } : undefined}
+              >
                 {subtitle}
               </p>
             </FadeUp>
