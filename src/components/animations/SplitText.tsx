@@ -10,7 +10,7 @@ type SplitTextProps = {
   delay?: number;
   staggerDelay?: number;
   as?: "h1" | "h2" | "h3" | "h4" | "p";
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 export default function SplitText({
   children,
@@ -18,6 +18,8 @@ export default function SplitText({
   delay = 0,
   staggerDelay = 0.05,
   as: Component = "h2",
+  style,
+  ...restProps
 }: SplitTextProps) {
   const words = children.split(" ");
 
@@ -54,7 +56,7 @@ export default function SplitText({
       viewport={{ once: true, margin: "-100px" }}
       className={cn("block", className)}
     >
-      <ComponentTag>
+      <ComponentTag style={style} {...restProps}>
         {words.map((word, index) => (
           <motion.span
             key={index}
