@@ -301,7 +301,7 @@ export default function ContactForm() {
               required
             />
             <span className="text-sm md:text-base">
-              I consent to receiving emails from Founder Groundworks, including my score and breakdown. *
+              I consent to receiving emails from Founder Groundworks, including programme information and application details. *
             </span>
           </label>
           {errors.emailConsent && (
